@@ -1,0 +1,56 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1509 ]
+[d frameptr 6 ]
+"10 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.36\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"16 E:\Nam_2\ViXuLi\Assignment 8.1 - LED control via Serial interface\Serial_interface.X\newmain.c
+[v _Blink_LED Blink_LED `(v  1 e 1 0 ]
+"107
+[v _main main `(v  1 e 1 0 ]
+"1951 D:/Application/MBLAPX/packs/Microchip/PIC12-16F1xxx_DFP/1.3.90/xc8\pic\include\proc\pic16f1509.h
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+[s S22 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"1968
+[u S31 . 1 `S22 1 . 1 0 ]
+[v _LATCbits LATCbits `VES31  1 e 1 @270 ]
+"11 E:\Nam_2\ViXuLi\Assignment 8.1 - LED control via Serial interface\Serial_interface.X\newmain.c
+[v _cmd cmd `[10]uc  1 e 10 0 ]
+"12
+[v _state state `[8]uc  1 e 8 0 ]
+"13
+[v _blink blink `uc  1 e 1 0 ]
+[v _on on `uc  1 e 1 0 ]
+[v _off off `uc  1 e 1 0 ]
+"14
+[v _count count `i  1 e 2 0 ]
+"107
+[v _main main `(v  1 e 1 0 ]
+{
+"235
+[v main@i_86 i `uc  1 a 1 5 ]
+"195
+[v main@i_85 i `uc  1 a 1 4 ]
+"258
+[v main@i_87 i `uc  1 a 1 6 ]
+"111
+[v main@i i `i  1 a 2 7 ]
+"261
+} 0
+"16
+[v _Blink_LED Blink_LED `(v  1 e 1 0 ]
+{
+[v Blink_LED@x x `i  1 p 2 0 ]
+"105
+} 0

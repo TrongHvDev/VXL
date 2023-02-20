@@ -1,0 +1,3815 @@
+
+
+Microchip MPLAB XC8 Assembler V2.36 build 20220127204148 
+                                                                                               Sun May 29 22:22:53 2022
+
+Microchip MPLAB XC8 C Compiler v2.36 (Free license) build 20220127204148 Og1 
+     1                           	processor	16F1509
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1,noexec
+     7                           	psect	clrtext,global,class=CODE,delta=2
+     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     9                           	psect	maintext,global,class=CODE,merge=1,split=1,delta=2
+    10                           	psect	text1,local,class=CODE,merge=1,delta=2
+    11                           	psect	idloc,global,abs,ovrld,class=IDLOC,space=5,delta=2,noexec
+    12                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    13                           	dabs	1,0x7E,2
+    14  0000                     
+    15                           ; Version 2.40
+    16                           ; Generated 17/11/2021 GMT
+    17                           ; 
+    18                           ; Copyright © 2021, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    19                           ; All rights reserved.
+    20                           ; 
+    21                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    22                           ; 
+    23                           ; Redistribution and use in source and binary forms, with or without modification, are
+    24                           ; permitted provided that the following conditions are met:
+    25                           ; 
+    26                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    27                           ;        conditions and the following disclaimer.
+    28                           ; 
+    29                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    30                           ;        of conditions and the following disclaimer in the documentation and/or other
+    31                           ;        materials provided with the distribution. Publication is not required when
+    32                           ;        this file is used in an embedded application.
+    33                           ; 
+    34                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    35                           ;        software without specific prior written permission.
+    36                           ; 
+    37                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    38                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    39                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    40                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    41                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    42                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    43                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    44                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    45                           ; 
+    46                           ; 
+    47                           ; Code-generator required, PIC16F1509 Definitions
+    48                           ; 
+    49                           ; SFR Addresses
+    50  0000                     	;# 
+    51  0001                     	;# 
+    52  0002                     	;# 
+    53  0003                     	;# 
+    54  0004                     	;# 
+    55  0005                     	;# 
+    56  0006                     	;# 
+    57  0007                     	;# 
+    58  0008                     	;# 
+    59  0009                     	;# 
+    60  000A                     	;# 
+    61  000B                     	;# 
+    62  000C                     	;# 
+    63  000D                     	;# 
+    64  000E                     	;# 
+    65  0011                     	;# 
+    66  0012                     	;# 
+    67  0013                     	;# 
+    68  0015                     	;# 
+    69  0016                     	;# 
+    70  0016                     	;# 
+    71  0017                     	;# 
+    72  0018                     	;# 
+    73  0019                     	;# 
+    74  001A                     	;# 
+    75  001B                     	;# 
+    76  001C                     	;# 
+    77  008C                     	;# 
+    78  008D                     	;# 
+    79  008E                     	;# 
+    80  0091                     	;# 
+    81  0092                     	;# 
+    82  0093                     	;# 
+    83  0095                     	;# 
+    84  0096                     	;# 
+    85  0097                     	;# 
+    86  0099                     	;# 
+    87  009A                     	;# 
+    88  009B                     	;# 
+    89  009B                     	;# 
+    90  009C                     	;# 
+    91  009D                     	;# 
+    92  009E                     	;# 
+    93  009F                     	;# 
+    94  010C                     	;# 
+    95  010D                     	;# 
+    96  010E                     	;# 
+    97  0111                     	;# 
+    98  0112                     	;# 
+    99  0113                     	;# 
+   100  0114                     	;# 
+   101  0115                     	;# 
+   102  0116                     	;# 
+   103  0117                     	;# 
+   104  0118                     	;# 
+   105  0119                     	;# 
+   106  011D                     	;# 
+   107  018C                     	;# 
+   108  018D                     	;# 
+   109  018E                     	;# 
+   110  0191                     	;# 
+   111  0191                     	;# 
+   112  0192                     	;# 
+   113  0193                     	;# 
+   114  0193                     	;# 
+   115  0194                     	;# 
+   116  0195                     	;# 
+   117  0196                     	;# 
+   118  0197                     	;# 
+   119  0199                     	;# 
+   120  019A                     	;# 
+   121  019B                     	;# 
+   122  019B                     	;# 
+   123  019C                     	;# 
+   124  019D                     	;# 
+   125  019E                     	;# 
+   126  019F                     	;# 
+   127  020C                     	;# 
+   128  020D                     	;# 
+   129  0211                     	;# 
+   130  0211                     	;# 
+   131  0212                     	;# 
+   132  0212                     	;# 
+   133  0213                     	;# 
+   134  0213                     	;# 
+   135  0214                     	;# 
+   136  0214                     	;# 
+   137  0215                     	;# 
+   138  0215                     	;# 
+   139  0215                     	;# 
+   140  0216                     	;# 
+   141  0216                     	;# 
+   142  0217                     	;# 
+   143  0217                     	;# 
+   144  0391                     	;# 
+   145  0392                     	;# 
+   146  0393                     	;# 
+   147  0394                     	;# 
+   148  0395                     	;# 
+   149  0396                     	;# 
+   150  0498                     	;# 
+   151  0498                     	;# 
+   152  0499                     	;# 
+   153  049A                     	;# 
+   154  049B                     	;# 
+   155  049B                     	;# 
+   156  049C                     	;# 
+   157  049D                     	;# 
+   158  049E                     	;# 
+   159  049F                     	;# 
+   160  0611                     	;# 
+   161  0612                     	;# 
+   162  0613                     	;# 
+   163  0613                     	;# 
+   164  0614                     	;# 
+   165  0615                     	;# 
+   166  0616                     	;# 
+   167  0616                     	;# 
+   168  0617                     	;# 
+   169  0618                     	;# 
+   170  0619                     	;# 
+   171  0619                     	;# 
+   172  061A                     	;# 
+   173  061B                     	;# 
+   174  061C                     	;# 
+   175  061C                     	;# 
+   176  0691                     	;# 
+   177  0692                     	;# 
+   178  0693                     	;# 
+   179  0694                     	;# 
+   180  0695                     	;# 
+   181  0F0F                     	;# 
+   182  0F10                     	;# 
+   183  0F11                     	;# 
+   184  0F12                     	;# 
+   185  0F13                     	;# 
+   186  0F14                     	;# 
+   187  0F15                     	;# 
+   188  0F16                     	;# 
+   189  0F17                     	;# 
+   190  0F18                     	;# 
+   191  0F19                     	;# 
+   192  0F1A                     	;# 
+   193  0F1B                     	;# 
+   194  0F1C                     	;# 
+   195  0F1D                     	;# 
+   196  0F1E                     	;# 
+   197  0F1F                     	;# 
+   198  0F20                     	;# 
+   199  0F21                     	;# 
+   200  0F22                     	;# 
+   201  0F23                     	;# 
+   202  0F24                     	;# 
+   203  0F25                     	;# 
+   204  0F26                     	;# 
+   205  0F27                     	;# 
+   206  0F28                     	;# 
+   207  0F29                     	;# 
+   208  0F2A                     	;# 
+   209  0F2B                     	;# 
+   210  0F2C                     	;# 
+   211  0F2D                     	;# 
+   212  0F2E                     	;# 
+   213  0F2F                     	;# 
+   214  0F8C                     	;# 
+   215  0F8D                     	;# 
+   216  0F91                     	;# 
+   217  0F95                     	;# 
+   218  0F96                     	;# 
+   219  0F97                     	;# 
+   220  0F9C                     	;# 
+   221  0F9D                     	;# 
+   222  0F9E                     	;# 
+   223  0FE3                     	;# 
+   224  0FE4                     	;# 
+   225  0FE5                     	;# 
+   226  0FE6                     	;# 
+   227  0FE7                     	;# 
+   228  0FE8                     	;# 
+   229  0FE9                     	;# 
+   230  0FEA                     	;# 
+   231  0FEB                     	;# 
+   232  0FED                     	;# 
+   233  0FEE                     	;# 
+   234  0FEF                     	;# 
+   235  010E                     _LATC	set	270
+   236  010E                     _LATCbits	set	270
+   237                           
+   238                           	psect	cinit
+   239  0000'                    start_initialization:	
+   240                           ; #config settings
+   241                           
+   242  0000'                    __initialization:
+   243                           
+   244                           ; Clear objects allocated to COMMON
+   245  0000' 0180'              	clrf	__pbssCOMMON& (0+127)
+   246  0001' 0180'              	clrf	(__pbssCOMMON+1)& (0+127)
+   247  0002' 0180'              	clrf	(__pbssCOMMON+2)& (0+127)
+   248  0003' 0180'              	clrf	(__pbssCOMMON+3)& (0+127)
+   249  0004' 0180'              	clrf	(__pbssCOMMON+4)& (0+127)
+   250                           
+   251                           ; Clear objects allocated to BANK0
+   252  0005' 3000'              	movlw	low __pbssBANK0
+   253  0006' 0084               	movwf	4
+   254  0007' 3000'              	movlw	high __pbssBANK0
+   255  0008' 0085               	movwf	5
+   256  0009' 3012               	movlw	18
+   257  000A' 3180' 2000' 3180'  	fcall	clear_ram0
+   258  000D'                    end_of_initialization:	
+   259                           ;End of C runtime variable initialization code
+   260                           
+   261  000D'                    __end_of__initialization:
+   262  000D' 0020               	movlb	0
+   263  000E' 3180' 2800'        	ljmp	_main	;jump to C main() function
+   264                           
+   265                           	psect	bssCOMMON
+   266  0000'                    __pbssCOMMON:
+   267  0000'                    _count:
+   268  0000'                    	ds	2
+   269  0002'                    _off:
+   270  0002'                    	ds	1
+   271  0003'                    _on:
+   272  0003'                    	ds	1
+   273  0004'                    _blink:
+   274  0004'                    	ds	1
+   275                           
+   276                           	psect	bssBANK0
+   277  0000'                    __pbssBANK0:
+   278  0000'                    _cmd:
+   279  0000'                    	ds	10
+   280  000A'                    _state:
+   281  000A'                    	ds	8
+   282                           
+   283                           	psect	clrtext
+   284  0000'                    clear_ram0:	
+   285                           ;	Called with FSR0 containing the base address, and
+   286                           ;	WREG with the size to clear
+   287                           
+   288  0000' 0064               	clrwdt	;clear the watchdog before getting into this loop
+   289  0001'                    clrloop0:
+   290  0001' 0180               	clrf	0	;clear RAM location pointed to by FSR
+   291  0002' 3101               	addfsr 0,1
+   292  0003' 0B89               	decfsz	9,f	;Have we reached the end of clearing yet?
+   293  0004' 2800'              	goto	clrloop0	;have we reached the end yet?
+   294  0005' 3400               	retlw	0	;all done for this memory range, return
+   295                           
+   296                           	psect	cstackCOMMON
+   297  0000'                    __pcstackCOMMON:
+   298  0000'                    ?_SYSTEM_Initialize:
+   299  0000'                    ??_SYSTEM_Initialize:	
+   300                           ; 1 bytes @ 0x0
+   301                           
+   302  0000'                    ?_EUSART_is_rx_ready:	
+   303                           ; 1 bytes @ 0x0
+   304                           
+   305  0000'                    ??_EUSART_is_rx_ready:	
+   306                           ; 1 bytes @ 0x0
+   307                           
+   308  0000'                    ?_EUSART_Read:	
+   309                           ; 1 bytes @ 0x0
+   310                           
+   311  0000'                    ??_EUSART_Read:	
+   312                           ; 1 bytes @ 0x0
+   313                           
+   314  0000'                    ?_Blink_LED:	
+   315                           ; 1 bytes @ 0x0
+   316                           
+   317  0000'                    ?_main:	
+   318                           ; 1 bytes @ 0x0
+   319                           
+   320  0000'                    Blink_LED@x:	
+   321                           ; 1 bytes @ 0x0
+   322                           
+   323                           
+   324                           ; 2 bytes @ 0x0
+   325  0000'                    	ds	2
+   326  0002'                    ??_Blink_LED:
+   327                           
+   328                           ; 1 bytes @ 0x2
+   329  0002'                    	ds	1
+   330  0003'                    ??_main:
+   331                           
+   332                           ; 1 bytes @ 0x3
+   333  0003'                    	ds	1
+   334  0004'                    main@i_85:
+   335                           
+   336                           ; 1 bytes @ 0x4
+   337  0004'                    	ds	1
+   338  0005'                    main@i_86:
+   339                           
+   340                           ; 1 bytes @ 0x5
+   341  0005'                    	ds	1
+   342  0006'                    main@i_87:
+   343                           
+   344                           ; 1 bytes @ 0x6
+   345  0006'                    	ds	1
+   346  0007'                    main@i:
+   347                           
+   348                           ; 2 bytes @ 0x7
+   349  0007'                    	ds	2
+   350                           
+   351                           	psect	maintext
+   352  0000'                    __pmaintext:	
+   353 ;;
+   354 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   355 ;;
+   356 ;; *************** function _main *****************
+   357 ;; Defined at:
+   358 ;;		line 107 in file "newmain.c"
+   359 ;; Parameters:    Size  Location     Type
+   360 ;;		None
+   361 ;; Auto vars:     Size  Location     Type
+   362 ;;  i               1    5[COMMON] unsigned char 
+   363 ;;  i               1    4[COMMON] unsigned char 
+   364 ;;  i               1    6[COMMON] unsigned char 
+   365 ;;  i               2    7[COMMON] int 
+   366 ;; Return value:  Size  Location     Type
+   367 ;;                  1    wreg      void 
+   368 ;; Registers used:
+   369 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, fsr1l, fsr1h, status,2, status,0, pclath, cstack
+   370 ;; Tracked objects:
+   371 ;;		On entry : B1F/0
+   372 ;;		On exit  : 0/0
+   373 ;;		Unchanged: 0/0
+   374 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+   375 ;;      Params:         0       0       0       0       0       0       0       0
+   376 ;;      Locals:         5       0       0       0       0       0       0       0
+   377 ;;      Temps:          1       0       0       0       0       0       0       0
+   378 ;;      Totals:         6       0       0       0       0       0       0       0
+   379 ;;Total ram usage:        6 bytes
+   380 ;; Hardware stack levels required when called: 1
+   381 ;; This function calls:
+   382 ;;		_Blink_LED
+   383 ;;		_EUSART_Read
+   384 ;;		_EUSART_is_rx_ready
+   385 ;;		_SYSTEM_Initialize
+   386 ;; This function is called by:
+   387 ;;		Startup code after reset
+   388 ;; This function uses a non-reentrant model
+   389 ;;
+   390                           
+   391  0000'                    _main:	
+   392                           ;psect for function _main
+   393                           
+   394  0000'                    l1438:	
+   395                           ;incstack = 0
+   396                           ; Regs used in _main: [allreg]
+   397                           
+   398                           
+   399                           ;newmain.c: 108:     SYSTEM_Initialize();
+   400  0000' 3180' 2000' 3180'  	fcall	_SYSTEM_Initialize
+   401  0003'                    l1440:
+   402                           
+   403                           ;newmain.c: 109:     LATC = 0x00;
+   404  0003' 0022               	movlb	2	; select bank2
+   405  0004' 018E               	clrf	14	;volatile
+   406  0005'                    l1442:
+   407                           
+   408                           ;newmain.c: 111:         for (int i = 0; i < 10; i++) {
+   409  0005' 0187'              	clrf	main@i
+   410  0006' 0188'              	clrf	main@i+1
+   411  0007' 2800'              	goto	l1480
+   412  0008'                    l1448:
+   413                           
+   414                           ;newmain.c: 113:                 if (state[0] == 1) {
+   415  0008' 0020               	movlb	0	; select bank0
+   416  0009' 030A'              	decf	_state,w
+   417  000A' 1D03               	btfss	3,2
+   418  000B' 2800'              	goto	u2371
+   419  000C' 2800'              	goto	u2370
+   420  000D'                    u2371:
+   421  000D' 2800'              	goto	l1452
+   422  000E'                    u2370:
+   423  000E'                    l1450:
+   424                           
+   425                           ;newmain.c: 114:                     Blink_LED(1);
+   426  000E' 3001               	movlw	1
+   427  000F' 0080'              	movwf	Blink_LED@x
+   428  0010' 3000               	movlw	0
+   429  0011' 0081'              	movwf	Blink_LED@x+1
+   430  0012' 3180' 2000' 3180'  	fcall	_Blink_LED
+   431  0015'                    l1452:
+   432                           
+   433                           ;newmain.c: 116:                 if (state[1] == 1) {
+   434  0015' 0020               	movlb	0	; select bank0
+   435  0016' 030B'              	decf	_state+1,w
+   436  0017' 1D03               	btfss	3,2
+   437  0018' 2800'              	goto	u2381
+   438  0019' 2800'              	goto	u2380
+   439  001A'                    u2381:
+   440  001A' 2800'              	goto	l1456
+   441  001B'                    u2380:
+   442  001B'                    l1454:
+   443                           
+   444                           ;newmain.c: 117:                     Blink_LED(2);
+   445  001B' 3002               	movlw	2
+   446  001C' 0080'              	movwf	Blink_LED@x
+   447  001D' 3000               	movlw	0
+   448  001E' 0081'              	movwf	Blink_LED@x+1
+   449  001F' 3180' 2000' 3180'  	fcall	_Blink_LED
+   450  0022'                    l1456:
+   451                           
+   452                           ;newmain.c: 119:                 if (state[2] == 1) {
+   453  0022' 0020               	movlb	0	; select bank0
+   454  0023' 030C'              	decf	_state+2,w
+   455  0024' 1D03               	btfss	3,2
+   456  0025' 2800'              	goto	u2391
+   457  0026' 2800'              	goto	u2390
+   458  0027'                    u2391:
+   459  0027' 2800'              	goto	l1460
+   460  0028'                    u2390:
+   461  0028'                    l1458:
+   462                           
+   463                           ;newmain.c: 120:                     Blink_LED(3);
+   464  0028' 3003               	movlw	3
+   465  0029' 0080'              	movwf	Blink_LED@x
+   466  002A' 3000               	movlw	0
+   467  002B' 0081'              	movwf	Blink_LED@x+1
+   468  002C' 3180' 2000' 3180'  	fcall	_Blink_LED
+   469  002F'                    l1460:
+   470                           
+   471                           ;newmain.c: 122:                 if (state[3] == 1) {
+   472  002F' 0020               	movlb	0	; select bank0
+   473  0030' 030D'              	decf	_state+3,w
+   474  0031' 1D03               	btfss	3,2
+   475  0032' 2800'              	goto	u2401
+   476  0033' 2800'              	goto	u2400
+   477  0034'                    u2401:
+   478  0034' 2800'              	goto	l1464
+   479  0035'                    u2400:
+   480  0035'                    l1462:
+   481                           
+   482                           ;newmain.c: 123:                     Blink_LED(4);
+   483  0035' 3004               	movlw	4
+   484  0036' 0080'              	movwf	Blink_LED@x
+   485  0037' 3000               	movlw	0
+   486  0038' 0081'              	movwf	Blink_LED@x+1
+   487  0039' 3180' 2000' 3180'  	fcall	_Blink_LED
+   488  003C'                    l1464:
+   489                           
+   490                           ;newmain.c: 125:                 if (state[4] == 1) {
+   491  003C' 0020               	movlb	0	; select bank0
+   492  003D' 030E'              	decf	_state+4,w
+   493  003E' 1D03               	btfss	3,2
+   494  003F' 2800'              	goto	u2411
+   495  0040' 2800'              	goto	u2410
+   496  0041'                    u2411:
+   497  0041' 2800'              	goto	l1468
+   498  0042'                    u2410:
+   499  0042'                    l1466:
+   500                           
+   501                           ;newmain.c: 126:                     Blink_LED(5);
+   502  0042' 3005               	movlw	5
+   503  0043' 0080'              	movwf	Blink_LED@x
+   504  0044' 3000               	movlw	0
+   505  0045' 0081'              	movwf	Blink_LED@x+1
+   506  0046' 3180' 2000' 3180'  	fcall	_Blink_LED
+   507  0049'                    l1468:
+   508                           
+   509                           ;newmain.c: 128:                 if (state[5] == 1) {
+   510  0049' 0020               	movlb	0	; select bank0
+   511  004A' 030F'              	decf	_state+5,w
+   512  004B' 1D03               	btfss	3,2
+   513  004C' 2800'              	goto	u2421
+   514  004D' 2800'              	goto	u2420
+   515  004E'                    u2421:
+   516  004E' 2800'              	goto	l1472
+   517  004F'                    u2420:
+   518  004F'                    l1470:
+   519                           
+   520                           ;newmain.c: 129:                     Blink_LED(6);
+   521  004F' 3006               	movlw	6
+   522  0050' 0080'              	movwf	Blink_LED@x
+   523  0051' 3000               	movlw	0
+   524  0052' 0081'              	movwf	Blink_LED@x+1
+   525  0053' 3180' 2000' 3180'  	fcall	_Blink_LED
+   526  0056'                    l1472:
+   527                           
+   528                           ;newmain.c: 131:                 if (state[6] == 1) {
+   529  0056' 0020               	movlb	0	; select bank0
+   530  0057' 0310'              	decf	_state+6,w
+   531  0058' 1D03               	btfss	3,2
+   532  0059' 2800'              	goto	u2431
+   533  005A' 2800'              	goto	u2430
+   534  005B'                    u2431:
+   535  005B' 2800'              	goto	l1476
+   536  005C'                    u2430:
+   537  005C'                    l1474:
+   538                           
+   539                           ;newmain.c: 132:                     Blink_LED(7);
+   540  005C' 3007               	movlw	7
+   541  005D' 0080'              	movwf	Blink_LED@x
+   542  005E' 3000               	movlw	0
+   543  005F' 0081'              	movwf	Blink_LED@x+1
+   544  0060' 3180' 2000' 3180'  	fcall	_Blink_LED
+   545  0063'                    l1476:
+   546                           
+   547                           ;newmain.c: 134:                 if (state[7] == 1) {
+   548  0063' 0020               	movlb	0	; select bank0
+   549  0064' 0311'              	decf	_state+7,w
+   550  0065' 1D03               	btfss	3,2
+   551  0066' 2800'              	goto	u2441
+   552  0067' 2800'              	goto	u2440
+   553  0068'                    u2441:
+   554  0068' 2800'              	goto	l1480
+   555  0069'                    u2440:
+   556  0069'                    l1478:
+   557                           
+   558                           ;newmain.c: 135:                     Blink_LED(8);
+   559  0069' 3008               	movlw	8
+   560  006A' 0080'              	movwf	Blink_LED@x
+   561  006B' 3000               	movlw	0
+   562  006C' 0081'              	movwf	Blink_LED@x+1
+   563  006D' 3180' 2000' 3180'  	fcall	_Blink_LED
+   564  0070'                    l1480:
+   565                           
+   566                           ;newmain.c: 112:             while (EUSART_is_rx_ready() == 0) {
+   567  0070' 3180' 2000' 3180'  	fcall	_EUSART_is_rx_ready
+   568  0073' 3A00               	xorlw	0
+   569  0074' 1903               	skipnz
+   570  0075' 2800'              	goto	u2451
+   571  0076' 2800'              	goto	u2450
+   572  0077'                    u2451:
+   573  0077' 2800'              	goto	l1448
+   574  0078'                    u2450:
+   575  0078'                    l1482:
+   576                           
+   577                           ;newmain.c: 138:             cmd[i] = EUSART_Read();
+   578  0078' 3180' 2000' 3180'  	fcall	_EUSART_Read
+   579  007B' 0083'              	movwf	??_main
+   580  007C' 0807'              	movf	main@i,w
+   581  007D' 3E00'              	addlw	(low (_cmd| 0))& (0+255)
+   582  007E' 0086               	movwf	6
+   583  007F' 0187               	clrf	7
+   584  0080' 0803'              	movf	??_main,w
+   585  0081' 0081               	movwf	1
+   586  0082'                    l1484:
+   587                           
+   588                           ;newmain.c: 139:             if (cmd[i] == '#') i = 10;
+   589  0082' 0807'              	movf	main@i,w
+   590  0083' 3E00'              	addlw	(low (_cmd| 0))& (0+255)
+   591  0084' 0086               	movwf	6
+   592  0085' 0187               	clrf	7
+   593  0086' 3023               	movlw	35
+   594  0087' 0601               	xorwf	1,w
+   595  0088' 1D03               	btfss	3,2
+   596  0089' 2800'              	goto	u2461
+   597  008A' 2800'              	goto	u2460
+   598  008B'                    u2461:
+   599  008B' 2800'              	goto	l86
+   600  008C'                    u2460:
+   601  008C'                    l1486:
+   602  008C' 300A               	movlw	10
+   603  008D' 0087'              	movwf	main@i
+   604  008E' 3000               	movlw	0
+   605  008F' 0088'              	movwf	main@i+1
+   606  0090'                    l86:
+   607                           
+   608                           ;newmain.c: 140:         }
+   609  0090' 3001               	movlw	1
+   610  0091' 0787'              	addwf	main@i,f
+   611  0092' 3000               	movlw	0
+   612  0093' 3D88'              	addwfc	main@i+1,f
+   613  0094' 0808'              	movf	main@i+1,w
+   614  0095' 3A80               	xorlw	128
+   615  0096' 0083'              	movwf	??_main
+   616  0097' 3080               	movlw	128
+   617  0098' 0203'              	subwf	??_main,w
+   618  0099' 1D03               	skipz
+   619  009A' 2800'              	goto	u2475
+   620  009B' 300A               	movlw	10
+   621  009C' 0207'              	subwf	main@i,w
+   622  009D'                    u2475:
+   623  009D' 1C03               	skipc
+   624  009E' 2800'              	goto	u2471
+   625  009F' 2800'              	goto	u2470
+   626  00A0'                    u2471:
+   627  00A0' 2800'              	goto	l1480
+   628  00A1'                    u2470:
+   629  00A1'                    l1488:
+   630                           
+   631                           ;newmain.c: 143:         if (cmd[1] == 'N') {
+   632  00A1' 304E               	movlw	78
+   633  00A2' 0020               	movlb	0	; select bank0
+   634  00A3' 0601'              	xorwf	_cmd+1,w
+   635  00A4' 1D03               	btfss	3,2
+   636  00A5' 2800'              	goto	u2481
+   637  00A6' 2800'              	goto	u2480
+   638  00A7'                    u2481:
+   639  00A7' 2800'              	goto	l1494
+   640  00A8'                    u2480:
+   641  00A8'                    l1490:
+   642                           
+   643                           ;newmain.c: 144:             on = 1;
+   644  00A8' 0183'              	clrf	_on
+   645  00A9' 0A83'              	incf	_on,f
+   646  00AA'                    l1492:
+   647                           
+   648                           ;newmain.c: 145:             off = 0;
+   649  00AA' 0182'              	clrf	_off
+   650                           
+   651                           ;newmain.c: 146:             blink = 0;
+   652  00AB' 0184'              	clrf	_blink
+   653  00AC'                    l1494:
+   654                           
+   655                           ;newmain.c: 148:         if (cmd[1] == 'F') {
+   656  00AC' 3046               	movlw	70
+   657  00AD' 0601'              	xorwf	_cmd+1,w
+   658  00AE' 1D03               	btfss	3,2
+   659  00AF' 2800'              	goto	u2491
+   660  00B0' 2800'              	goto	u2490
+   661  00B1'                    u2491:
+   662  00B1' 2800'              	goto	l1500
+   663  00B2'                    u2490:
+   664  00B2'                    l1496:
+   665                           
+   666                           ;newmain.c: 149:             on = 0;
+   667  00B2' 0183'              	clrf	_on
+   668  00B3'                    l1498:
+   669                           
+   670                           ;newmain.c: 150:             off = 1;
+   671  00B3' 0182'              	clrf	_off
+   672  00B4' 0A82'              	incf	_off,f
+   673                           
+   674                           ;newmain.c: 151:             blink = 0;
+   675  00B5' 0184'              	clrf	_blink
+   676  00B6'                    l1500:
+   677                           
+   678                           ;newmain.c: 153:         if (cmd[1] == 'L') {
+   679  00B6' 304C               	movlw	76
+   680  00B7' 0601'              	xorwf	_cmd+1,w
+   681  00B8' 1D03               	btfss	3,2
+   682  00B9' 2800'              	goto	u2501
+   683  00BA' 2800'              	goto	u2500
+   684  00BB'                    u2501:
+   685  00BB' 2800'              	goto	l1506
+   686  00BC'                    u2500:
+   687  00BC'                    l1502:
+   688                           
+   689                           ;newmain.c: 154:             on = 0;
+   690  00BC' 0183'              	clrf	_on
+   691                           
+   692                           ;newmain.c: 155:             off = 0;
+   693  00BD' 0182'              	clrf	_off
+   694  00BE'                    l1504:
+   695                           
+   696                           ;newmain.c: 156:             blink = 1;
+   697  00BE' 0184'              	clrf	_blink
+   698  00BF' 0A84'              	incf	_blink,f
+   699  00C0'                    l1506:
+   700                           
+   701                           ;newmain.c: 160:         if (on == 1) {
+   702  00C0' 0303'              	decf	_on,w
+   703  00C1' 1D03               	btfss	3,2
+   704  00C2' 2800'              	goto	u2511
+   705  00C3' 2800'              	goto	u2510
+   706  00C4'                    u2511:
+   707  00C4' 2800'              	goto	l1642
+   708  00C5'                    u2510:
+   709  00C5'                    l1508:
+   710                           
+   711                           ;newmain.c: 161:             if ((cmd[0] == 'O')&&(cmd[1] == 'N')&&(cmd[2] == '0')&&(cmd
+      +                          [3] == '1')&&(cmd[4] == '#')) {
+   712  00C5' 304F               	movlw	79
+   713  00C6' 0600'              	xorwf	_cmd,w
+   714  00C7' 1D03               	btfss	3,2
+   715  00C8' 2800'              	goto	u2521
+   716  00C9' 2800'              	goto	u2520
+   717  00CA'                    u2521:
+   718  00CA' 2800'              	goto	l1522
+   719  00CB'                    u2520:
+   720  00CB'                    l1510:
+   721  00CB' 304E               	movlw	78
+   722  00CC' 0601'              	xorwf	_cmd+1,w
+   723  00CD' 1D03               	btfss	3,2
+   724  00CE' 2800'              	goto	u2531
+   725  00CF' 2800'              	goto	u2530
+   726  00D0'                    u2531:
+   727  00D0' 2800'              	goto	l1522
+   728  00D1'                    u2530:
+   729  00D1'                    l1512:
+   730  00D1' 3030               	movlw	48
+   731  00D2' 0602'              	xorwf	_cmd+2,w
+   732  00D3' 1D03               	btfss	3,2
+   733  00D4' 2800'              	goto	u2541
+   734  00D5' 2800'              	goto	u2540
+   735  00D6'                    u2541:
+   736  00D6' 2800'              	goto	l1522
+   737  00D7'                    u2540:
+   738  00D7'                    l1514:
+   739  00D7' 3031               	movlw	49
+   740  00D8' 0603'              	xorwf	_cmd+3,w
+   741  00D9' 1D03               	btfss	3,2
+   742  00DA' 2800'              	goto	u2551
+   743  00DB' 2800'              	goto	u2550
+   744  00DC'                    u2551:
+   745  00DC' 2800'              	goto	l1522
+   746  00DD'                    u2550:
+   747  00DD'                    l1516:
+   748  00DD' 3023               	movlw	35
+   749  00DE' 0604'              	xorwf	_cmd+4,w
+   750  00DF' 1D03               	btfss	3,2
+   751  00E0' 2800'              	goto	u2561
+   752  00E1' 2800'              	goto	u2560
+   753  00E2'                    u2561:
+   754  00E2' 2800'              	goto	l1522
+   755  00E3'                    u2560:
+   756  00E3'                    l1518:
+   757                           
+   758                           ;newmain.c: 162:                 LATCbits.LATC0 = 1;
+   759  00E3' 0022               	movlb	2	; select bank2
+   760  00E4' 140E               	bsf	14,0	;volatile
+   761  00E5'                    l1520:
+   762                           
+   763                           ;newmain.c: 163:                 state[0] = 0;
+   764  00E5' 0020               	movlb	0	; select bank0
+   765  00E6' 018A'              	clrf	_state
+   766  00E7'                    l1522:
+   767                           
+   768                           ;newmain.c: 165:             if ((cmd[0] == 'O')&&(cmd[1] == 'N')&&(cmd[2] == '0')&&(cmd
+      +                          [3] == '2')&&(cmd[4] == '#')) {
+   769  00E7' 304F               	movlw	79
+   770  00E8' 0600'              	xorwf	_cmd,w
+   771  00E9' 1D03               	btfss	3,2
+   772  00EA' 2800'              	goto	u2571
+   773  00EB' 2800'              	goto	u2570
+   774  00EC'                    u2571:
+   775  00EC' 2800'              	goto	l1536
+   776  00ED'                    u2570:
+   777  00ED'                    l1524:
+   778  00ED' 304E               	movlw	78
+   779  00EE' 0601'              	xorwf	_cmd+1,w
+   780  00EF' 1D03               	btfss	3,2
+   781  00F0' 2800'              	goto	u2581
+   782  00F1' 2800'              	goto	u2580
+   783  00F2'                    u2581:
+   784  00F2' 2800'              	goto	l1536
+   785  00F3'                    u2580:
+   786  00F3'                    l1526:
+   787  00F3' 3030               	movlw	48
+   788  00F4' 0602'              	xorwf	_cmd+2,w
+   789  00F5' 1D03               	btfss	3,2
+   790  00F6' 2800'              	goto	u2591
+   791  00F7' 2800'              	goto	u2590
+   792  00F8'                    u2591:
+   793  00F8' 2800'              	goto	l1536
+   794  00F9'                    u2590:
+   795  00F9'                    l1528:
+   796  00F9' 3032               	movlw	50
+   797  00FA' 0603'              	xorwf	_cmd+3,w
+   798  00FB' 1D03               	btfss	3,2
+   799  00FC' 2800'              	goto	u2601
+   800  00FD' 2800'              	goto	u2600
+   801  00FE'                    u2601:
+   802  00FE' 2800'              	goto	l1536
+   803  00FF'                    u2600:
+   804  00FF'                    l1530:
+   805  00FF' 3023               	movlw	35
+   806  0100' 0604'              	xorwf	_cmd+4,w
+   807  0101' 1D03               	btfss	3,2
+   808  0102' 2800'              	goto	u2611
+   809  0103' 2800'              	goto	u2610
+   810  0104'                    u2611:
+   811  0104' 2800'              	goto	l1536
+   812  0105'                    u2610:
+   813  0105'                    l1532:
+   814                           
+   815                           ;newmain.c: 166:                 LATCbits.LATC1 = 1;
+   816  0105' 0022               	movlb	2	; select bank2
+   817  0106' 148E               	bsf	14,1	;volatile
+   818  0107'                    l1534:
+   819                           
+   820                           ;newmain.c: 167:                 state[1] = 0;
+   821  0107' 0020               	movlb	0	; select bank0
+   822  0108' 018B'              	clrf	_state+1
+   823  0109'                    l1536:
+   824                           
+   825                           ;newmain.c: 169:             if ((cmd[0] == 'O')&&(cmd[1] == 'N')&&(cmd[2] == '0')&&(cmd
+      +                          [3] == '3')&&(cmd[4] == '#')) {
+   826  0109' 304F               	movlw	79
+   827  010A' 0600'              	xorwf	_cmd,w
+   828  010B' 1D03               	btfss	3,2
+   829  010C' 2800'              	goto	u2621
+   830  010D' 2800'              	goto	u2620
+   831  010E'                    u2621:
+   832  010E' 2800'              	goto	l1550
+   833  010F'                    u2620:
+   834  010F'                    l1538:
+   835  010F' 304E               	movlw	78
+   836  0110' 0601'              	xorwf	_cmd+1,w
+   837  0111' 1D03               	btfss	3,2
+   838  0112' 2800'              	goto	u2631
+   839  0113' 2800'              	goto	u2630
+   840  0114'                    u2631:
+   841  0114' 2800'              	goto	l1550
+   842  0115'                    u2630:
+   843  0115'                    l1540:
+   844  0115' 3030               	movlw	48
+   845  0116' 0602'              	xorwf	_cmd+2,w
+   846  0117' 1D03               	btfss	3,2
+   847  0118' 2800'              	goto	u2641
+   848  0119' 2800'              	goto	u2640
+   849  011A'                    u2641:
+   850  011A' 2800'              	goto	l1550
+   851  011B'                    u2640:
+   852  011B'                    l1542:
+   853  011B' 3033               	movlw	51
+   854  011C' 0603'              	xorwf	_cmd+3,w
+   855  011D' 1D03               	btfss	3,2
+   856  011E' 2800'              	goto	u2651
+   857  011F' 2800'              	goto	u2650
+   858  0120'                    u2651:
+   859  0120' 2800'              	goto	l1550
+   860  0121'                    u2650:
+   861  0121'                    l1544:
+   862  0121' 3023               	movlw	35
+   863  0122' 0604'              	xorwf	_cmd+4,w
+   864  0123' 1D03               	btfss	3,2
+   865  0124' 2800'              	goto	u2661
+   866  0125' 2800'              	goto	u2660
+   867  0126'                    u2661:
+   868  0126' 2800'              	goto	l1550
+   869  0127'                    u2660:
+   870  0127'                    l1546:
+   871                           
+   872                           ;newmain.c: 170:                 LATCbits.LATC2 = 1;
+   873  0127' 0022               	movlb	2	; select bank2
+   874  0128' 150E               	bsf	14,2	;volatile
+   875  0129'                    l1548:
+   876                           
+   877                           ;newmain.c: 171:                 state[2] = 0;
+   878  0129' 0020               	movlb	0	; select bank0
+   879  012A' 018C'              	clrf	_state+2
+   880  012B'                    l1550:
+   881                           
+   882                           ;newmain.c: 173:             if ((cmd[0] == 'O')&&(cmd[1] == 'N')&&(cmd[2] == '0')&&(cmd
+      +                          [3] == '4')&&(cmd[4] == '#')) {
+   883  012B' 304F               	movlw	79
+   884  012C' 0600'              	xorwf	_cmd,w
+   885  012D' 1D03               	btfss	3,2
+   886  012E' 2800'              	goto	u2671
+   887  012F' 2800'              	goto	u2670
+   888  0130'                    u2671:
+   889  0130' 2800'              	goto	l1564
+   890  0131'                    u2670:
+   891  0131'                    l1552:
+   892  0131' 304E               	movlw	78
+   893  0132' 0601'              	xorwf	_cmd+1,w
+   894  0133' 1D03               	btfss	3,2
+   895  0134' 2800'              	goto	u2681
+   896  0135' 2800'              	goto	u2680
+   897  0136'                    u2681:
+   898  0136' 2800'              	goto	l1564
+   899  0137'                    u2680:
+   900  0137'                    l1554:
+   901  0137' 3030               	movlw	48
+   902  0138' 0602'              	xorwf	_cmd+2,w
+   903  0139' 1D03               	btfss	3,2
+   904  013A' 2800'              	goto	u2691
+   905  013B' 2800'              	goto	u2690
+   906  013C'                    u2691:
+   907  013C' 2800'              	goto	l1564
+   908  013D'                    u2690:
+   909  013D'                    l1556:
+   910  013D' 3034               	movlw	52
+   911  013E' 0603'              	xorwf	_cmd+3,w
+   912  013F' 1D03               	btfss	3,2
+   913  0140' 2800'              	goto	u2701
+   914  0141' 2800'              	goto	u2700
+   915  0142'                    u2701:
+   916  0142' 2800'              	goto	l1564
+   917  0143'                    u2700:
+   918  0143'                    l1558:
+   919  0143' 3023               	movlw	35
+   920  0144' 0604'              	xorwf	_cmd+4,w
+   921  0145' 1D03               	btfss	3,2
+   922  0146' 2800'              	goto	u2711
+   923  0147' 2800'              	goto	u2710
+   924  0148'                    u2711:
+   925  0148' 2800'              	goto	l1564
+   926  0149'                    u2710:
+   927  0149'                    l1560:
+   928                           
+   929                           ;newmain.c: 174:                 LATCbits.LATC3 = 1;
+   930  0149' 0022               	movlb	2	; select bank2
+   931  014A' 158E               	bsf	14,3	;volatile
+   932  014B'                    l1562:
+   933                           
+   934                           ;newmain.c: 175:                 state[3] = 0;
+   935  014B' 0020               	movlb	0	; select bank0
+   936  014C' 018D'              	clrf	_state+3
+   937  014D'                    l1564:
+   938                           
+   939                           ;newmain.c: 177:             if ((cmd[0] == 'O')&&(cmd[1] == 'N')&&(cmd[2] == '0')&&(cmd
+      +                          [3] == '5')&&(cmd[4] == '#')) {
+   940  014D' 304F               	movlw	79
+   941  014E' 0600'              	xorwf	_cmd,w
+   942  014F' 1D03               	btfss	3,2
+   943  0150' 2800'              	goto	u2721
+   944  0151' 2800'              	goto	u2720
+   945  0152'                    u2721:
+   946  0152' 2800'              	goto	l1578
+   947  0153'                    u2720:
+   948  0153'                    l1566:
+   949  0153' 304E               	movlw	78
+   950  0154' 0601'              	xorwf	_cmd+1,w
+   951  0155' 1D03               	btfss	3,2
+   952  0156' 2800'              	goto	u2731
+   953  0157' 2800'              	goto	u2730
+   954  0158'                    u2731:
+   955  0158' 2800'              	goto	l1578
+   956  0159'                    u2730:
+   957  0159'                    l1568:
+   958  0159' 3030               	movlw	48
+   959  015A' 0602'              	xorwf	_cmd+2,w
+   960  015B' 1D03               	btfss	3,2
+   961  015C' 2800'              	goto	u2741
+   962  015D' 2800'              	goto	u2740
+   963  015E'                    u2741:
+   964  015E' 2800'              	goto	l1578
+   965  015F'                    u2740:
+   966  015F'                    l1570:
+   967  015F' 3035               	movlw	53
+   968  0160' 0603'              	xorwf	_cmd+3,w
+   969  0161' 1D03               	btfss	3,2
+   970  0162' 2800'              	goto	u2751
+   971  0163' 2800'              	goto	u2750
+   972  0164'                    u2751:
+   973  0164' 2800'              	goto	l1578
+   974  0165'                    u2750:
+   975  0165'                    l1572:
+   976  0165' 3023               	movlw	35
+   977  0166' 0604'              	xorwf	_cmd+4,w
+   978  0167' 1D03               	btfss	3,2
+   979  0168' 2800'              	goto	u2761
+   980  0169' 2800'              	goto	u2760
+   981  016A'                    u2761:
+   982  016A' 2800'              	goto	l1578
+   983  016B'                    u2760:
+   984  016B'                    l1574:
+   985                           
+   986                           ;newmain.c: 178:                 LATCbits.LATC4 = 1;
+   987  016B' 0022               	movlb	2	; select bank2
+   988  016C' 160E               	bsf	14,4	;volatile
+   989  016D'                    l1576:
+   990                           
+   991                           ;newmain.c: 179:                 state[4] = 0;
+   992  016D' 0020               	movlb	0	; select bank0
+   993  016E' 018E'              	clrf	_state+4
+   994  016F'                    l1578:
+   995                           
+   996                           ;newmain.c: 181:             if ((cmd[0] == 'O')&&(cmd[1] == 'N')&&(cmd[2] == '0')&&(cmd
+      +                          [3] == '6')&&(cmd[4] == '#')) {
+   997  016F' 304F               	movlw	79
+   998  0170' 0600'              	xorwf	_cmd,w
+   999  0171' 1D03               	btfss	3,2
+  1000  0172' 2800'              	goto	u2771
+  1001  0173' 2800'              	goto	u2770
+  1002  0174'                    u2771:
+  1003  0174' 2800'              	goto	l1592
+  1004  0175'                    u2770:
+  1005  0175'                    l1580:
+  1006  0175' 304E               	movlw	78
+  1007  0176' 0601'              	xorwf	_cmd+1,w
+  1008  0177' 1D03               	btfss	3,2
+  1009  0178' 2800'              	goto	u2781
+  1010  0179' 2800'              	goto	u2780
+  1011  017A'                    u2781:
+  1012  017A' 2800'              	goto	l1592
+  1013  017B'                    u2780:
+  1014  017B'                    l1582:
+  1015  017B' 3030               	movlw	48
+  1016  017C' 0602'              	xorwf	_cmd+2,w
+  1017  017D' 1D03               	btfss	3,2
+  1018  017E' 2800'              	goto	u2791
+  1019  017F' 2800'              	goto	u2790
+  1020  0180'                    u2791:
+  1021  0180' 2800'              	goto	l1592
+  1022  0181'                    u2790:
+  1023  0181'                    l1584:
+  1024  0181' 3036               	movlw	54
+  1025  0182' 0603'              	xorwf	_cmd+3,w
+  1026  0183' 1D03               	btfss	3,2
+  1027  0184' 2800'              	goto	u2801
+  1028  0185' 2800'              	goto	u2800
+  1029  0186'                    u2801:
+  1030  0186' 2800'              	goto	l1592
+  1031  0187'                    u2800:
+  1032  0187'                    l1586:
+  1033  0187' 3023               	movlw	35
+  1034  0188' 0604'              	xorwf	_cmd+4,w
+  1035  0189' 1D03               	btfss	3,2
+  1036  018A' 2800'              	goto	u2811
+  1037  018B' 2800'              	goto	u2810
+  1038  018C'                    u2811:
+  1039  018C' 2800'              	goto	l1592
+  1040  018D'                    u2810:
+  1041  018D'                    l1588:
+  1042                           
+  1043                           ;newmain.c: 182:                 LATCbits.LATC5 = 1;
+  1044  018D' 0022               	movlb	2	; select bank2
+  1045  018E' 168E               	bsf	14,5	;volatile
+  1046  018F'                    l1590:
+  1047                           
+  1048                           ;newmain.c: 183:                 state[5] = 0;
+  1049  018F' 0020               	movlb	0	; select bank0
+  1050  0190' 018F'              	clrf	_state+5
+  1051  0191'                    l1592:
+  1052                           
+  1053                           ;newmain.c: 185:             if ((cmd[0] == 'O')&&(cmd[1] == 'N')&&(cmd[2] == '0')&&(cmd
+      +                          [3] == '7')&&(cmd[4] == '#')) {
+  1054  0191' 304F               	movlw	79
+  1055  0192' 0600'              	xorwf	_cmd,w
+  1056  0193' 1D03               	btfss	3,2
+  1057  0194' 2800'              	goto	u2821
+  1058  0195' 2800'              	goto	u2820
+  1059  0196'                    u2821:
+  1060  0196' 2800'              	goto	l1606
+  1061  0197'                    u2820:
+  1062  0197'                    l1594:
+  1063  0197' 304E               	movlw	78
+  1064  0198' 0601'              	xorwf	_cmd+1,w
+  1065  0199' 1D03               	btfss	3,2
+  1066  019A' 2800'              	goto	u2831
+  1067  019B' 2800'              	goto	u2830
+  1068  019C'                    u2831:
+  1069  019C' 2800'              	goto	l1606
+  1070  019D'                    u2830:
+  1071  019D'                    l1596:
+  1072  019D' 3030               	movlw	48
+  1073  019E' 0602'              	xorwf	_cmd+2,w
+  1074  019F' 1D03               	btfss	3,2
+  1075  01A0' 2800'              	goto	u2841
+  1076  01A1' 2800'              	goto	u2840
+  1077  01A2'                    u2841:
+  1078  01A2' 2800'              	goto	l1606
+  1079  01A3'                    u2840:
+  1080  01A3'                    l1598:
+  1081  01A3' 3037               	movlw	55
+  1082  01A4' 0603'              	xorwf	_cmd+3,w
+  1083  01A5' 1D03               	btfss	3,2
+  1084  01A6' 2800'              	goto	u2851
+  1085  01A7' 2800'              	goto	u2850
+  1086  01A8'                    u2851:
+  1087  01A8' 2800'              	goto	l1606
+  1088  01A9'                    u2850:
+  1089  01A9'                    l1600:
+  1090  01A9' 3023               	movlw	35
+  1091  01AA' 0604'              	xorwf	_cmd+4,w
+  1092  01AB' 1D03               	btfss	3,2
+  1093  01AC' 2800'              	goto	u2861
+  1094  01AD' 2800'              	goto	u2860
+  1095  01AE'                    u2861:
+  1096  01AE' 2800'              	goto	l1606
+  1097  01AF'                    u2860:
+  1098  01AF'                    l1602:
+  1099                           
+  1100                           ;newmain.c: 186:                 LATCbits.LATC6 = 1;
+  1101  01AF' 0022               	movlb	2	; select bank2
+  1102  01B0' 170E               	bsf	14,6	;volatile
+  1103  01B1'                    l1604:
+  1104                           
+  1105                           ;newmain.c: 187:                 state[6] = 0;
+  1106  01B1' 0020               	movlb	0	; select bank0
+  1107  01B2' 0190'              	clrf	_state+6
+  1108  01B3'                    l1606:
+  1109                           
+  1110                           ;newmain.c: 189:             if ((cmd[0] == 'O')&&(cmd[1] == 'N')&&(cmd[2] == '0')&&(cmd
+      +                          [3] == '8')&&(cmd[4] == '#')) {
+  1111  01B3' 304F               	movlw	79
+  1112  01B4' 0600'              	xorwf	_cmd,w
+  1113  01B5' 1D03               	btfss	3,2
+  1114  01B6' 2800'              	goto	u2871
+  1115  01B7' 2800'              	goto	u2870
+  1116  01B8'                    u2871:
+  1117  01B8' 2800'              	goto	l1620
+  1118  01B9'                    u2870:
+  1119  01B9'                    l1608:
+  1120  01B9' 304E               	movlw	78
+  1121  01BA' 0601'              	xorwf	_cmd+1,w
+  1122  01BB' 1D03               	btfss	3,2
+  1123  01BC' 2800'              	goto	u2881
+  1124  01BD' 2800'              	goto	u2880
+  1125  01BE'                    u2881:
+  1126  01BE' 2800'              	goto	l1620
+  1127  01BF'                    u2880:
+  1128  01BF'                    l1610:
+  1129  01BF' 3030               	movlw	48
+  1130  01C0' 0602'              	xorwf	_cmd+2,w
+  1131  01C1' 1D03               	btfss	3,2
+  1132  01C2' 2800'              	goto	u2891
+  1133  01C3' 2800'              	goto	u2890
+  1134  01C4'                    u2891:
+  1135  01C4' 2800'              	goto	l1620
+  1136  01C5'                    u2890:
+  1137  01C5'                    l1612:
+  1138  01C5' 3038               	movlw	56
+  1139  01C6' 0603'              	xorwf	_cmd+3,w
+  1140  01C7' 1D03               	btfss	3,2
+  1141  01C8' 2800'              	goto	u2901
+  1142  01C9' 2800'              	goto	u2900
+  1143  01CA'                    u2901:
+  1144  01CA' 2800'              	goto	l1620
+  1145  01CB'                    u2900:
+  1146  01CB'                    l1614:
+  1147  01CB' 3023               	movlw	35
+  1148  01CC' 0604'              	xorwf	_cmd+4,w
+  1149  01CD' 1D03               	btfss	3,2
+  1150  01CE' 2800'              	goto	u2911
+  1151  01CF' 2800'              	goto	u2910
+  1152  01D0'                    u2911:
+  1153  01D0' 2800'              	goto	l1620
+  1154  01D1'                    u2910:
+  1155  01D1'                    l1616:
+  1156                           
+  1157                           ;newmain.c: 190:                 LATCbits.LATC7 = 1;
+  1158  01D1' 0022               	movlb	2	; select bank2
+  1159  01D2' 178E               	bsf	14,7	;volatile
+  1160  01D3'                    l1618:
+  1161                           
+  1162                           ;newmain.c: 191:                 state[7] = 0;
+  1163  01D3' 0020               	movlb	0	; select bank0
+  1164  01D4' 0191'              	clrf	_state+7
+  1165  01D5'                    l1620:
+  1166                           
+  1167                           ;newmain.c: 193:             if ((cmd[0] == 'O')&&(cmd[1] == 'N')&&(cmd[2] == '*')&&(cmd
+      +                          [3] == '#')) {
+  1168  01D5' 304F               	movlw	79
+  1169  01D6' 0600'              	xorwf	_cmd,w
+  1170  01D7' 1D03               	btfss	3,2
+  1171  01D8' 2800'              	goto	u2921
+  1172  01D9' 2800'              	goto	u2920
+  1173  01DA'                    u2921:
+  1174  01DA' 2800'              	goto	l1642
+  1175  01DB'                    u2920:
+  1176  01DB'                    l1622:
+  1177  01DB' 304E               	movlw	78
+  1178  01DC' 0601'              	xorwf	_cmd+1,w
+  1179  01DD' 1D03               	btfss	3,2
+  1180  01DE' 2800'              	goto	u2931
+  1181  01DF' 2800'              	goto	u2930
+  1182  01E0'                    u2931:
+  1183  01E0' 2800'              	goto	l1642
+  1184  01E1'                    u2930:
+  1185  01E1'                    l1624:
+  1186  01E1' 302A               	movlw	42
+  1187  01E2' 0602'              	xorwf	_cmd+2,w
+  1188  01E3' 1D03               	btfss	3,2
+  1189  01E4' 2800'              	goto	u2941
+  1190  01E5' 2800'              	goto	u2940
+  1191  01E6'                    u2941:
+  1192  01E6' 2800'              	goto	l1642
+  1193  01E7'                    u2940:
+  1194  01E7'                    l1626:
+  1195  01E7' 3023               	movlw	35
+  1196  01E8' 0603'              	xorwf	_cmd+3,w
+  1197  01E9' 1D03               	btfss	3,2
+  1198  01EA' 2800'              	goto	u2951
+  1199  01EB' 2800'              	goto	u2950
+  1200  01EC'                    u2951:
+  1201  01EC' 2800'              	goto	l1642
+  1202  01ED'                    u2950:
+  1203  01ED'                    l1628:
+  1204                           
+  1205                           ;newmain.c: 194:                 LATC = 0xFF;
+  1206  01ED' 30FF               	movlw	255
+  1207  01EE' 0022               	movlb	2	; select bank2
+  1208  01EF' 008E               	movwf	14	;volatile
+  1209  01F0'                    l1630:
+  1210                           
+  1211                           ;newmain.c: 195:                 for (char i = 0; i < 8; i++) state[i] = 0;
+  1212  01F0' 0184'              	clrf	main@i_85
+  1213  01F1'                    l1636:
+  1214  01F1' 0804'              	movf	main@i_85,w
+  1215  01F2' 3E00'              	addlw	(low (_state| 0))& (0+255)
+  1216  01F3' 0086               	movwf	6
+  1217  01F4' 0187               	clrf	7
+  1218  01F5' 0181               	clrf	1
+  1219  01F6'                    l1638:
+  1220  01F6' 3001               	movlw	1
+  1221  01F7' 0083'              	movwf	??_main
+  1222  01F8' 0803'              	movf	??_main,w
+  1223  01F9' 0784'              	addwf	main@i_85,f
+  1224  01FA'                    l1640:
+  1225  01FA' 3008               	movlw	8
+  1226  01FB' 0204'              	subwf	main@i_85,w
+  1227  01FC' 1C03               	skipc
+  1228  01FD' 2800'              	goto	u2961
+  1229  01FE' 2800'              	goto	u2960
+  1230  01FF'                    u2961:
+  1231  01FF' 2800'              	goto	l1636
+  1232  0200'                    u2960:
+  1233  0200'                    l1642:
+  1234                           
+  1235                           ;newmain.c: 200:         if (off == 1) {
+  1236  0200' 0302'              	decf	_off,w
+  1237  0201' 1D03               	btfss	3,2
+  1238  0202' 2800'              	goto	u2971
+  1239  0203' 2800'              	goto	u2970
+  1240  0204'                    u2971:
+  1241  0204' 2800'              	goto	l1794
+  1242  0205'                    u2970:
+  1243  0205'                    l1644:
+  1244                           
+  1245                           ;newmain.c: 201:             if ((cmd[0] == 'O')&&(cmd[1] == 'F')&&(cmd[2] == 'F')&&(cmd
+      +                          [3] == '0')&&(cmd[4] == '1')&&(cmd[5] == '#')) {
+  1246  0205' 304F               	movlw	79
+  1247  0206' 0020               	movlb	0	; select bank0
+  1248  0207' 0600'              	xorwf	_cmd,w
+  1249  0208' 1D03               	btfss	3,2
+  1250  0209' 2800'              	goto	u2981
+  1251  020A' 2800'              	goto	u2980
+  1252  020B'                    u2981:
+  1253  020B' 2800'              	goto	l1660
+  1254  020C'                    u2980:
+  1255  020C'                    l1646:
+  1256  020C' 3046               	movlw	70
+  1257  020D' 0601'              	xorwf	_cmd+1,w
+  1258  020E' 1D03               	btfss	3,2
+  1259  020F' 2800'              	goto	u2991
+  1260  0210' 2800'              	goto	u2990
+  1261  0211'                    u2991:
+  1262  0211' 2800'              	goto	l1660
+  1263  0212'                    u2990:
+  1264  0212'                    l1648:
+  1265  0212' 3046               	movlw	70
+  1266  0213' 0602'              	xorwf	_cmd+2,w
+  1267  0214' 1D03               	btfss	3,2
+  1268  0215' 2800'              	goto	u3001
+  1269  0216' 2800'              	goto	u3000
+  1270  0217'                    u3001:
+  1271  0217' 2800'              	goto	l1660
+  1272  0218'                    u3000:
+  1273  0218'                    l1650:
+  1274  0218' 3030               	movlw	48
+  1275  0219' 0603'              	xorwf	_cmd+3,w
+  1276  021A' 1D03               	btfss	3,2
+  1277  021B' 2800'              	goto	u3011
+  1278  021C' 2800'              	goto	u3010
+  1279  021D'                    u3011:
+  1280  021D' 2800'              	goto	l1660
+  1281  021E'                    u3010:
+  1282  021E'                    l1652:
+  1283  021E' 3031               	movlw	49
+  1284  021F' 0604'              	xorwf	_cmd+4,w
+  1285  0220' 1D03               	btfss	3,2
+  1286  0221' 2800'              	goto	u3021
+  1287  0222' 2800'              	goto	u3020
+  1288  0223'                    u3021:
+  1289  0223' 2800'              	goto	l1660
+  1290  0224'                    u3020:
+  1291  0224'                    l1654:
+  1292  0224' 3023               	movlw	35
+  1293  0225' 0605'              	xorwf	_cmd+5,w
+  1294  0226' 1D03               	btfss	3,2
+  1295  0227' 2800'              	goto	u3031
+  1296  0228' 2800'              	goto	u3030
+  1297  0229'                    u3031:
+  1298  0229' 2800'              	goto	l1660
+  1299  022A'                    u3030:
+  1300  022A'                    l1656:
+  1301                           
+  1302                           ;newmain.c: 202:                 LATCbits.LATC0 = 0;
+  1303  022A' 0022               	movlb	2	; select bank2
+  1304  022B' 100E               	bcf	14,0	;volatile
+  1305  022C'                    l1658:
+  1306                           
+  1307                           ;newmain.c: 203:                 state[0] = 0;
+  1308  022C' 0020               	movlb	0	; select bank0
+  1309  022D' 018A'              	clrf	_state
+  1310  022E'                    l1660:
+  1311                           
+  1312                           ;newmain.c: 205:             if ((cmd[0] == 'O')&&(cmd[1] == 'F')&&(cmd[2] == 'F')&&(cmd
+      +                          [3] == '0')&&(cmd[4] == '2')&&(cmd[5] == '#')) {
+  1313  022E' 304F               	movlw	79
+  1314  022F' 0600'              	xorwf	_cmd,w
+  1315  0230' 1D03               	btfss	3,2
+  1316  0231' 2800'              	goto	u3041
+  1317  0232' 2800'              	goto	u3040
+  1318  0233'                    u3041:
+  1319  0233' 2800'              	goto	l1676
+  1320  0234'                    u3040:
+  1321  0234'                    l1662:
+  1322  0234' 3046               	movlw	70
+  1323  0235' 0601'              	xorwf	_cmd+1,w
+  1324  0236' 1D03               	btfss	3,2
+  1325  0237' 2800'              	goto	u3051
+  1326  0238' 2800'              	goto	u3050
+  1327  0239'                    u3051:
+  1328  0239' 2800'              	goto	l1676
+  1329  023A'                    u3050:
+  1330  023A'                    l1664:
+  1331  023A' 3046               	movlw	70
+  1332  023B' 0602'              	xorwf	_cmd+2,w
+  1333  023C' 1D03               	btfss	3,2
+  1334  023D' 2800'              	goto	u3061
+  1335  023E' 2800'              	goto	u3060
+  1336  023F'                    u3061:
+  1337  023F' 2800'              	goto	l1676
+  1338  0240'                    u3060:
+  1339  0240'                    l1666:
+  1340  0240' 3030               	movlw	48
+  1341  0241' 0603'              	xorwf	_cmd+3,w
+  1342  0242' 1D03               	btfss	3,2
+  1343  0243' 2800'              	goto	u3071
+  1344  0244' 2800'              	goto	u3070
+  1345  0245'                    u3071:
+  1346  0245' 2800'              	goto	l1676
+  1347  0246'                    u3070:
+  1348  0246'                    l1668:
+  1349  0246' 3032               	movlw	50
+  1350  0247' 0604'              	xorwf	_cmd+4,w
+  1351  0248' 1D03               	btfss	3,2
+  1352  0249' 2800'              	goto	u3081
+  1353  024A' 2800'              	goto	u3080
+  1354  024B'                    u3081:
+  1355  024B' 2800'              	goto	l1676
+  1356  024C'                    u3080:
+  1357  024C'                    l1670:
+  1358  024C' 3023               	movlw	35
+  1359  024D' 0605'              	xorwf	_cmd+5,w
+  1360  024E' 1D03               	btfss	3,2
+  1361  024F' 2800'              	goto	u3091
+  1362  0250' 2800'              	goto	u3090
+  1363  0251'                    u3091:
+  1364  0251' 2800'              	goto	l1676
+  1365  0252'                    u3090:
+  1366  0252'                    l1672:
+  1367                           
+  1368                           ;newmain.c: 206:                 LATCbits.LATC1 = 0;
+  1369  0252' 0022               	movlb	2	; select bank2
+  1370  0253' 108E               	bcf	14,1	;volatile
+  1371  0254'                    l1674:
+  1372                           
+  1373                           ;newmain.c: 207:                 state[1] = 0;
+  1374  0254' 0020               	movlb	0	; select bank0
+  1375  0255' 018B'              	clrf	_state+1
+  1376  0256'                    l1676:
+  1377                           
+  1378                           ;newmain.c: 209:             if ((cmd[0] == 'O')&&(cmd[1] == 'F')&&(cmd[2] == 'F')&&(cmd
+      +                          [3] == '0')&&(cmd[4] == '3')&&(cmd[5] == '#')) {
+  1379  0256' 304F               	movlw	79
+  1380  0257' 0600'              	xorwf	_cmd,w
+  1381  0258' 1D03               	btfss	3,2
+  1382  0259' 2800'              	goto	u3101
+  1383  025A' 2800'              	goto	u3100
+  1384  025B'                    u3101:
+  1385  025B' 2800'              	goto	l1692
+  1386  025C'                    u3100:
+  1387  025C'                    l1678:
+  1388  025C' 3046               	movlw	70
+  1389  025D' 0601'              	xorwf	_cmd+1,w
+  1390  025E' 1D03               	btfss	3,2
+  1391  025F' 2800'              	goto	u3111
+  1392  0260' 2800'              	goto	u3110
+  1393  0261'                    u3111:
+  1394  0261' 2800'              	goto	l1692
+  1395  0262'                    u3110:
+  1396  0262'                    l1680:
+  1397  0262' 3046               	movlw	70
+  1398  0263' 0602'              	xorwf	_cmd+2,w
+  1399  0264' 1D03               	btfss	3,2
+  1400  0265' 2800'              	goto	u3121
+  1401  0266' 2800'              	goto	u3120
+  1402  0267'                    u3121:
+  1403  0267' 2800'              	goto	l1692
+  1404  0268'                    u3120:
+  1405  0268'                    l1682:
+  1406  0268' 3030               	movlw	48
+  1407  0269' 0603'              	xorwf	_cmd+3,w
+  1408  026A' 1D03               	btfss	3,2
+  1409  026B' 2800'              	goto	u3131
+  1410  026C' 2800'              	goto	u3130
+  1411  026D'                    u3131:
+  1412  026D' 2800'              	goto	l1692
+  1413  026E'                    u3130:
+  1414  026E'                    l1684:
+  1415  026E' 3033               	movlw	51
+  1416  026F' 0604'              	xorwf	_cmd+4,w
+  1417  0270' 1D03               	btfss	3,2
+  1418  0271' 2800'              	goto	u3141
+  1419  0272' 2800'              	goto	u3140
+  1420  0273'                    u3141:
+  1421  0273' 2800'              	goto	l1692
+  1422  0274'                    u3140:
+  1423  0274'                    l1686:
+  1424  0274' 3023               	movlw	35
+  1425  0275' 0605'              	xorwf	_cmd+5,w
+  1426  0276' 1D03               	btfss	3,2
+  1427  0277' 2800'              	goto	u3151
+  1428  0278' 2800'              	goto	u3150
+  1429  0279'                    u3151:
+  1430  0279' 2800'              	goto	l1692
+  1431  027A'                    u3150:
+  1432  027A'                    l1688:
+  1433                           
+  1434                           ;newmain.c: 210:                 LATCbits.LATC2 = 0;
+  1435  027A' 0022               	movlb	2	; select bank2
+  1436  027B' 110E               	bcf	14,2	;volatile
+  1437  027C'                    l1690:
+  1438                           
+  1439                           ;newmain.c: 211:                 state[2] = 0;
+  1440  027C' 0020               	movlb	0	; select bank0
+  1441  027D' 018C'              	clrf	_state+2
+  1442  027E'                    l1692:
+  1443                           
+  1444                           ;newmain.c: 213:             if ((cmd[0] == 'O')&&(cmd[1] == 'F')&&(cmd[2] == 'F')&&(cmd
+      +                          [3] == '0')&&(cmd[4] == '4')&&(cmd[5] == '#')) {
+  1445  027E' 304F               	movlw	79
+  1446  027F' 0600'              	xorwf	_cmd,w
+  1447  0280' 1D03               	btfss	3,2
+  1448  0281' 2800'              	goto	u3161
+  1449  0282' 2800'              	goto	u3160
+  1450  0283'                    u3161:
+  1451  0283' 2800'              	goto	l1708
+  1452  0284'                    u3160:
+  1453  0284'                    l1694:
+  1454  0284' 3046               	movlw	70
+  1455  0285' 0601'              	xorwf	_cmd+1,w
+  1456  0286' 1D03               	btfss	3,2
+  1457  0287' 2800'              	goto	u3171
+  1458  0288' 2800'              	goto	u3170
+  1459  0289'                    u3171:
+  1460  0289' 2800'              	goto	l1708
+  1461  028A'                    u3170:
+  1462  028A'                    l1696:
+  1463  028A' 3046               	movlw	70
+  1464  028B' 0602'              	xorwf	_cmd+2,w
+  1465  028C' 1D03               	btfss	3,2
+  1466  028D' 2800'              	goto	u3181
+  1467  028E' 2800'              	goto	u3180
+  1468  028F'                    u3181:
+  1469  028F' 2800'              	goto	l1708
+  1470  0290'                    u3180:
+  1471  0290'                    l1698:
+  1472  0290' 3030               	movlw	48
+  1473  0291' 0603'              	xorwf	_cmd+3,w
+  1474  0292' 1D03               	btfss	3,2
+  1475  0293' 2800'              	goto	u3191
+  1476  0294' 2800'              	goto	u3190
+  1477  0295'                    u3191:
+  1478  0295' 2800'              	goto	l1708
+  1479  0296'                    u3190:
+  1480  0296'                    l1700:
+  1481  0296' 3034               	movlw	52
+  1482  0297' 0604'              	xorwf	_cmd+4,w
+  1483  0298' 1D03               	btfss	3,2
+  1484  0299' 2800'              	goto	u3201
+  1485  029A' 2800'              	goto	u3200
+  1486  029B'                    u3201:
+  1487  029B' 2800'              	goto	l1708
+  1488  029C'                    u3200:
+  1489  029C'                    l1702:
+  1490  029C' 3023               	movlw	35
+  1491  029D' 0605'              	xorwf	_cmd+5,w
+  1492  029E' 1D03               	btfss	3,2
+  1493  029F' 2800'              	goto	u3211
+  1494  02A0' 2800'              	goto	u3210
+  1495  02A1'                    u3211:
+  1496  02A1' 2800'              	goto	l1708
+  1497  02A2'                    u3210:
+  1498  02A2'                    l1704:
+  1499                           
+  1500                           ;newmain.c: 214:                 LATCbits.LATC3 = 0;
+  1501  02A2' 0022               	movlb	2	; select bank2
+  1502  02A3' 118E               	bcf	14,3	;volatile
+  1503  02A4'                    l1706:
+  1504                           
+  1505                           ;newmain.c: 215:                 state[3] = 0;
+  1506  02A4' 0020               	movlb	0	; select bank0
+  1507  02A5' 018D'              	clrf	_state+3
+  1508  02A6'                    l1708:
+  1509                           
+  1510                           ;newmain.c: 217:             if ((cmd[0] == 'O')&&(cmd[1] == 'F')&&(cmd[2] == 'F')&&(cmd
+      +                          [3] == '0')&&(cmd[4] == '5')&&(cmd[5] == '#')) {
+  1511  02A6' 304F               	movlw	79
+  1512  02A7' 0600'              	xorwf	_cmd,w
+  1513  02A8' 1D03               	btfss	3,2
+  1514  02A9' 2800'              	goto	u3221
+  1515  02AA' 2800'              	goto	u3220
+  1516  02AB'                    u3221:
+  1517  02AB' 2800'              	goto	l1724
+  1518  02AC'                    u3220:
+  1519  02AC'                    l1710:
+  1520  02AC' 3046               	movlw	70
+  1521  02AD' 0601'              	xorwf	_cmd+1,w
+  1522  02AE' 1D03               	btfss	3,2
+  1523  02AF' 2800'              	goto	u3231
+  1524  02B0' 2800'              	goto	u3230
+  1525  02B1'                    u3231:
+  1526  02B1' 2800'              	goto	l1724
+  1527  02B2'                    u3230:
+  1528  02B2'                    l1712:
+  1529  02B2' 3046               	movlw	70
+  1530  02B3' 0602'              	xorwf	_cmd+2,w
+  1531  02B4' 1D03               	btfss	3,2
+  1532  02B5' 2800'              	goto	u3241
+  1533  02B6' 2800'              	goto	u3240
+  1534  02B7'                    u3241:
+  1535  02B7' 2800'              	goto	l1724
+  1536  02B8'                    u3240:
+  1537  02B8'                    l1714:
+  1538  02B8' 3030               	movlw	48
+  1539  02B9' 0603'              	xorwf	_cmd+3,w
+  1540  02BA' 1D03               	btfss	3,2
+  1541  02BB' 2800'              	goto	u3251
+  1542  02BC' 2800'              	goto	u3250
+  1543  02BD'                    u3251:
+  1544  02BD' 2800'              	goto	l1724
+  1545  02BE'                    u3250:
+  1546  02BE'                    l1716:
+  1547  02BE' 3035               	movlw	53
+  1548  02BF' 0604'              	xorwf	_cmd+4,w
+  1549  02C0' 1D03               	btfss	3,2
+  1550  02C1' 2800'              	goto	u3261
+  1551  02C2' 2800'              	goto	u3260
+  1552  02C3'                    u3261:
+  1553  02C3' 2800'              	goto	l1724
+  1554  02C4'                    u3260:
+  1555  02C4'                    l1718:
+  1556  02C4' 3023               	movlw	35
+  1557  02C5' 0605'              	xorwf	_cmd+5,w
+  1558  02C6' 1D03               	btfss	3,2
+  1559  02C7' 2800'              	goto	u3271
+  1560  02C8' 2800'              	goto	u3270
+  1561  02C9'                    u3271:
+  1562  02C9' 2800'              	goto	l1724
+  1563  02CA'                    u3270:
+  1564  02CA'                    l1720:
+  1565                           
+  1566                           ;newmain.c: 218:                 LATCbits.LATC4 = 0;
+  1567  02CA' 0022               	movlb	2	; select bank2
+  1568  02CB' 120E               	bcf	14,4	;volatile
+  1569  02CC'                    l1722:
+  1570                           
+  1571                           ;newmain.c: 219:                 state[4] = 0;
+  1572  02CC' 0020               	movlb	0	; select bank0
+  1573  02CD' 018E'              	clrf	_state+4
+  1574  02CE'                    l1724:
+  1575                           
+  1576                           ;newmain.c: 221:             if ((cmd[0] == 'O')&&(cmd[1] == 'F')&&(cmd[2] == 'F')&&(cmd
+      +                          [3] == '0')&&(cmd[4] == '6')&&(cmd[5] == '#')) {
+  1577  02CE' 304F               	movlw	79
+  1578  02CF' 0600'              	xorwf	_cmd,w
+  1579  02D0' 1D03               	btfss	3,2
+  1580  02D1' 2800'              	goto	u3281
+  1581  02D2' 2800'              	goto	u3280
+  1582  02D3'                    u3281:
+  1583  02D3' 2800'              	goto	l1740
+  1584  02D4'                    u3280:
+  1585  02D4'                    l1726:
+  1586  02D4' 3046               	movlw	70
+  1587  02D5' 0601'              	xorwf	_cmd+1,w
+  1588  02D6' 1D03               	btfss	3,2
+  1589  02D7' 2800'              	goto	u3291
+  1590  02D8' 2800'              	goto	u3290
+  1591  02D9'                    u3291:
+  1592  02D9' 2800'              	goto	l1740
+  1593  02DA'                    u3290:
+  1594  02DA'                    l1728:
+  1595  02DA' 3046               	movlw	70
+  1596  02DB' 0602'              	xorwf	_cmd+2,w
+  1597  02DC' 1D03               	btfss	3,2
+  1598  02DD' 2800'              	goto	u3301
+  1599  02DE' 2800'              	goto	u3300
+  1600  02DF'                    u3301:
+  1601  02DF' 2800'              	goto	l1740
+  1602  02E0'                    u3300:
+  1603  02E0'                    l1730:
+  1604  02E0' 3030               	movlw	48
+  1605  02E1' 0603'              	xorwf	_cmd+3,w
+  1606  02E2' 1D03               	btfss	3,2
+  1607  02E3' 2800'              	goto	u3311
+  1608  02E4' 2800'              	goto	u3310
+  1609  02E5'                    u3311:
+  1610  02E5' 2800'              	goto	l1740
+  1611  02E6'                    u3310:
+  1612  02E6'                    l1732:
+  1613  02E6' 3036               	movlw	54
+  1614  02E7' 0604'              	xorwf	_cmd+4,w
+  1615  02E8' 1D03               	btfss	3,2
+  1616  02E9' 2800'              	goto	u3321
+  1617  02EA' 2800'              	goto	u3320
+  1618  02EB'                    u3321:
+  1619  02EB' 2800'              	goto	l1740
+  1620  02EC'                    u3320:
+  1621  02EC'                    l1734:
+  1622  02EC' 3023               	movlw	35
+  1623  02ED' 0605'              	xorwf	_cmd+5,w
+  1624  02EE' 1D03               	btfss	3,2
+  1625  02EF' 2800'              	goto	u3331
+  1626  02F0' 2800'              	goto	u3330
+  1627  02F1'                    u3331:
+  1628  02F1' 2800'              	goto	l1740
+  1629  02F2'                    u3330:
+  1630  02F2'                    l1736:
+  1631                           
+  1632                           ;newmain.c: 222:                 LATCbits.LATC5 = 0;
+  1633  02F2' 0022               	movlb	2	; select bank2
+  1634  02F3' 128E               	bcf	14,5	;volatile
+  1635  02F4'                    l1738:
+  1636                           
+  1637                           ;newmain.c: 223:                 state[5] = 0;
+  1638  02F4' 0020               	movlb	0	; select bank0
+  1639  02F5' 018F'              	clrf	_state+5
+  1640  02F6'                    l1740:
+  1641                           
+  1642                           ;newmain.c: 225:             if ((cmd[0] == 'O')&&(cmd[1] == 'F')&&(cmd[2] == 'F')&&(cmd
+      +                          [3] == '0')&&(cmd[4] == '7')&&(cmd[5] == '#')) {
+  1643  02F6' 304F               	movlw	79
+  1644  02F7' 0600'              	xorwf	_cmd,w
+  1645  02F8' 1D03               	btfss	3,2
+  1646  02F9' 2800'              	goto	u3341
+  1647  02FA' 2800'              	goto	u3340
+  1648  02FB'                    u3341:
+  1649  02FB' 2800'              	goto	l1756
+  1650  02FC'                    u3340:
+  1651  02FC'                    l1742:
+  1652  02FC' 3046               	movlw	70
+  1653  02FD' 0601'              	xorwf	_cmd+1,w
+  1654  02FE' 1D03               	btfss	3,2
+  1655  02FF' 2800'              	goto	u3351
+  1656  0300' 2800'              	goto	u3350
+  1657  0301'                    u3351:
+  1658  0301' 2800'              	goto	l1756
+  1659  0302'                    u3350:
+  1660  0302'                    l1744:
+  1661  0302' 3046               	movlw	70
+  1662  0303' 0602'              	xorwf	_cmd+2,w
+  1663  0304' 1D03               	btfss	3,2
+  1664  0305' 2800'              	goto	u3361
+  1665  0306' 2800'              	goto	u3360
+  1666  0307'                    u3361:
+  1667  0307' 2800'              	goto	l1756
+  1668  0308'                    u3360:
+  1669  0308'                    l1746:
+  1670  0308' 3030               	movlw	48
+  1671  0309' 0603'              	xorwf	_cmd+3,w
+  1672  030A' 1D03               	btfss	3,2
+  1673  030B' 2800'              	goto	u3371
+  1674  030C' 2800'              	goto	u3370
+  1675  030D'                    u3371:
+  1676  030D' 2800'              	goto	l1756
+  1677  030E'                    u3370:
+  1678  030E'                    l1748:
+  1679  030E' 3037               	movlw	55
+  1680  030F' 0604'              	xorwf	_cmd+4,w
+  1681  0310' 1D03               	btfss	3,2
+  1682  0311' 2800'              	goto	u3381
+  1683  0312' 2800'              	goto	u3380
+  1684  0313'                    u3381:
+  1685  0313' 2800'              	goto	l1756
+  1686  0314'                    u3380:
+  1687  0314'                    l1750:
+  1688  0314' 3023               	movlw	35
+  1689  0315' 0605'              	xorwf	_cmd+5,w
+  1690  0316' 1D03               	btfss	3,2
+  1691  0317' 2800'              	goto	u3391
+  1692  0318' 2800'              	goto	u3390
+  1693  0319'                    u3391:
+  1694  0319' 2800'              	goto	l1756
+  1695  031A'                    u3390:
+  1696  031A'                    l1752:
+  1697                           
+  1698                           ;newmain.c: 226:                 LATCbits.LATC6 = 0;
+  1699  031A' 0022               	movlb	2	; select bank2
+  1700  031B' 130E               	bcf	14,6	;volatile
+  1701  031C'                    l1754:
+  1702                           
+  1703                           ;newmain.c: 227:                 state[6] = 0;
+  1704  031C' 0020               	movlb	0	; select bank0
+  1705  031D' 0190'              	clrf	_state+6
+  1706  031E'                    l1756:
+  1707                           
+  1708                           ;newmain.c: 229:             if ((cmd[0] == 'O')&&(cmd[1] == 'F')&&(cmd[2] == 'F')&&(cmd
+      +                          [3] == '0')&&(cmd[4] == '8')&&(cmd[5] == '#')) {
+  1709  031E' 304F               	movlw	79
+  1710  031F' 0600'              	xorwf	_cmd,w
+  1711  0320' 1D03               	btfss	3,2
+  1712  0321' 2800'              	goto	u3401
+  1713  0322' 2800'              	goto	u3400
+  1714  0323'                    u3401:
+  1715  0323' 2800'              	goto	l1772
+  1716  0324'                    u3400:
+  1717  0324'                    l1758:
+  1718  0324' 3046               	movlw	70
+  1719  0325' 0601'              	xorwf	_cmd+1,w
+  1720  0326' 1D03               	btfss	3,2
+  1721  0327' 2800'              	goto	u3411
+  1722  0328' 2800'              	goto	u3410
+  1723  0329'                    u3411:
+  1724  0329' 2800'              	goto	l1772
+  1725  032A'                    u3410:
+  1726  032A'                    l1760:
+  1727  032A' 3046               	movlw	70
+  1728  032B' 0602'              	xorwf	_cmd+2,w
+  1729  032C' 1D03               	btfss	3,2
+  1730  032D' 2800'              	goto	u3421
+  1731  032E' 2800'              	goto	u3420
+  1732  032F'                    u3421:
+  1733  032F' 2800'              	goto	l1772
+  1734  0330'                    u3420:
+  1735  0330'                    l1762:
+  1736  0330' 3030               	movlw	48
+  1737  0331' 0603'              	xorwf	_cmd+3,w
+  1738  0332' 1D03               	btfss	3,2
+  1739  0333' 2800'              	goto	u3431
+  1740  0334' 2800'              	goto	u3430
+  1741  0335'                    u3431:
+  1742  0335' 2800'              	goto	l1772
+  1743  0336'                    u3430:
+  1744  0336'                    l1764:
+  1745  0336' 3038               	movlw	56
+  1746  0337' 0604'              	xorwf	_cmd+4,w
+  1747  0338' 1D03               	btfss	3,2
+  1748  0339' 2800'              	goto	u3441
+  1749  033A' 2800'              	goto	u3440
+  1750  033B'                    u3441:
+  1751  033B' 2800'              	goto	l1772
+  1752  033C'                    u3440:
+  1753  033C'                    l1766:
+  1754  033C' 3023               	movlw	35
+  1755  033D' 0605'              	xorwf	_cmd+5,w
+  1756  033E' 1D03               	btfss	3,2
+  1757  033F' 2800'              	goto	u3451
+  1758  0340' 2800'              	goto	u3450
+  1759  0341'                    u3451:
+  1760  0341' 2800'              	goto	l1772
+  1761  0342'                    u3450:
+  1762  0342'                    l1768:
+  1763                           
+  1764                           ;newmain.c: 230:                 LATCbits.LATC7 = 0;
+  1765  0342' 0022               	movlb	2	; select bank2
+  1766  0343' 138E               	bcf	14,7	;volatile
+  1767  0344'                    l1770:
+  1768                           
+  1769                           ;newmain.c: 231:                 state[7] = 0;
+  1770  0344' 0020               	movlb	0	; select bank0
+  1771  0345' 0191'              	clrf	_state+7
+  1772  0346'                    l1772:
+  1773                           
+  1774                           ;newmain.c: 233:             if ((cmd[0] == 'O')&&(cmd[1] == 'F')&&(cmd[2] == 'F')&&(cmd
+      +                          [3] == '*')&&(cmd[4] == '#')) {
+  1775  0346' 304F               	movlw	79
+  1776  0347' 0600'              	xorwf	_cmd,w
+  1777  0348' 1D03               	btfss	3,2
+  1778  0349' 2800'              	goto	u3461
+  1779  034A' 2800'              	goto	u3460
+  1780  034B'                    u3461:
+  1781  034B' 2800'              	goto	l1794
+  1782  034C'                    u3460:
+  1783  034C'                    l1774:
+  1784  034C' 3046               	movlw	70
+  1785  034D' 0601'              	xorwf	_cmd+1,w
+  1786  034E' 1D03               	btfss	3,2
+  1787  034F' 2800'              	goto	u3471
+  1788  0350' 2800'              	goto	u3470
+  1789  0351'                    u3471:
+  1790  0351' 2800'              	goto	l1794
+  1791  0352'                    u3470:
+  1792  0352'                    l1776:
+  1793  0352' 3046               	movlw	70
+  1794  0353' 0602'              	xorwf	_cmd+2,w
+  1795  0354' 1D03               	btfss	3,2
+  1796  0355' 2800'              	goto	u3481
+  1797  0356' 2800'              	goto	u3480
+  1798  0357'                    u3481:
+  1799  0357' 2800'              	goto	l1794
+  1800  0358'                    u3480:
+  1801  0358'                    l1778:
+  1802  0358' 302A               	movlw	42
+  1803  0359' 0603'              	xorwf	_cmd+3,w
+  1804  035A' 1D03               	btfss	3,2
+  1805  035B' 2800'              	goto	u3491
+  1806  035C' 2800'              	goto	u3490
+  1807  035D'                    u3491:
+  1808  035D' 2800'              	goto	l1794
+  1809  035E'                    u3490:
+  1810  035E'                    l1780:
+  1811  035E' 3023               	movlw	35
+  1812  035F' 0604'              	xorwf	_cmd+4,w
+  1813  0360' 1D03               	btfss	3,2
+  1814  0361' 2800'              	goto	u3501
+  1815  0362' 2800'              	goto	u3500
+  1816  0363'                    u3501:
+  1817  0363' 2800'              	goto	l1794
+  1818  0364'                    u3500:
+  1819  0364'                    l1782:
+  1820                           
+  1821                           ;newmain.c: 234:                 LATC = 0x00;
+  1822  0364' 0022               	movlb	2	; select bank2
+  1823  0365' 018E               	clrf	14	;volatile
+  1824                           
+  1825                           ;newmain.c: 235:                 for (char i = 0; i < 8; i++) state[i] = 0;
+  1826  0366' 0185'              	clrf	main@i_86
+  1827  0367'                    l1784:
+  1828  0367' 3008               	movlw	8
+  1829  0368' 0205'              	subwf	main@i_86,w
+  1830  0369' 1C03               	skipc
+  1831  036A' 2800'              	goto	u3511
+  1832  036B' 2800'              	goto	u3510
+  1833  036C'                    u3511:
+  1834  036C' 2800'              	goto	l1788
+  1835  036D'                    u3510:
+  1836  036D' 2800'              	goto	l1794
+  1837  036E'                    l1788:
+  1838  036E' 0805'              	movf	main@i_86,w
+  1839  036F' 3E00'              	addlw	(low (_state| 0))& (0+255)
+  1840  0370' 0086               	movwf	6
+  1841  0371' 0187               	clrf	7
+  1842  0372' 0181               	clrf	1
+  1843  0373'                    l1790:
+  1844  0373' 3001               	movlw	1
+  1845  0374' 0083'              	movwf	??_main
+  1846  0375' 0803'              	movf	??_main,w
+  1847  0376' 0785'              	addwf	main@i_86,f
+  1848  0377' 2800'              	goto	l1784
+  1849  0378'                    l1794:
+  1850                           
+  1851                           ;newmain.c: 240:         if (blink == 1) {
+  1852  0378' 0304'              	decf	_blink,w
+  1853  0379' 1D03               	btfss	3,2
+  1854  037A' 2800'              	goto	u3521
+  1855  037B' 2800'              	goto	u3520
+  1856  037C'                    u3521:
+  1857  037C' 2800'              	goto	l1442
+  1858  037D'                    u3520:
+  1859  037D'                    l1796:
+  1860                           
+  1861                           ;newmain.c: 241:             if ((cmd[0] == 'B')&&(cmd[1] == 'L')&&(cmd[2] == 'I')&&(cmd
+      +                          [3] == 'N')&&(cmd[4] == 'K')&&(cmd[5] == '0')&&(cmd[6] == '1')&&(cmd[7] == '#'))
+  1862  037D' 3042               	movlw	66
+  1863  037E' 0020               	movlb	0	; select bank0
+  1864  037F' 0600'              	xorwf	_cmd,w
+  1865  0380' 1D03               	btfss	3,2
+  1866  0381' 2800'              	goto	u3531
+  1867  0382' 2800'              	goto	u3530
+  1868  0383'                    u3531:
+  1869  0383' 2800'              	goto	l1814
+  1870  0384'                    u3530:
+  1871  0384'                    l1798:
+  1872  0384' 304C               	movlw	76
+  1873  0385' 0601'              	xorwf	_cmd+1,w
+  1874  0386' 1D03               	btfss	3,2
+  1875  0387' 2800'              	goto	u3541
+  1876  0388' 2800'              	goto	u3540
+  1877  0389'                    u3541:
+  1878  0389' 2800'              	goto	l1814
+  1879  038A'                    u3540:
+  1880  038A'                    l1800:
+  1881  038A' 3049               	movlw	73
+  1882  038B' 0602'              	xorwf	_cmd+2,w
+  1883  038C' 1D03               	btfss	3,2
+  1884  038D' 2800'              	goto	u3551
+  1885  038E' 2800'              	goto	u3550
+  1886  038F'                    u3551:
+  1887  038F' 2800'              	goto	l1814
+  1888  0390'                    u3550:
+  1889  0390'                    l1802:
+  1890  0390' 304E               	movlw	78
+  1891  0391' 0603'              	xorwf	_cmd+3,w
+  1892  0392' 1D03               	btfss	3,2
+  1893  0393' 2800'              	goto	u3561
+  1894  0394' 2800'              	goto	u3560
+  1895  0395'                    u3561:
+  1896  0395' 2800'              	goto	l1814
+  1897  0396'                    u3560:
+  1898  0396'                    l1804:
+  1899  0396' 304B               	movlw	75
+  1900  0397' 0604'              	xorwf	_cmd+4,w
+  1901  0398' 1D03               	btfss	3,2
+  1902  0399' 2800'              	goto	u3571
+  1903  039A' 2800'              	goto	u3570
+  1904  039B'                    u3571:
+  1905  039B' 2800'              	goto	l1814
+  1906  039C'                    u3570:
+  1907  039C'                    l1806:
+  1908  039C' 3030               	movlw	48
+  1909  039D' 0605'              	xorwf	_cmd+5,w
+  1910  039E' 1D03               	btfss	3,2
+  1911  039F' 2800'              	goto	u3581
+  1912  03A0' 2800'              	goto	u3580
+  1913  03A1'                    u3581:
+  1914  03A1' 2800'              	goto	l1814
+  1915  03A2'                    u3580:
+  1916  03A2'                    l1808:
+  1917  03A2' 3031               	movlw	49
+  1918  03A3' 0606'              	xorwf	_cmd+6,w
+  1919  03A4' 1D03               	btfss	3,2
+  1920  03A5' 2800'              	goto	u3591
+  1921  03A6' 2800'              	goto	u3590
+  1922  03A7'                    u3591:
+  1923  03A7' 2800'              	goto	l1814
+  1924  03A8'                    u3590:
+  1925  03A8'                    l1810:
+  1926  03A8' 3023               	movlw	35
+  1927  03A9' 0607'              	xorwf	_cmd+7,w
+  1928  03AA' 1D03               	btfss	3,2
+  1929  03AB' 2800'              	goto	u3601
+  1930  03AC' 2800'              	goto	u3600
+  1931  03AD'                    u3601:
+  1932  03AD' 2800'              	goto	l1814
+  1933  03AE'                    u3600:
+  1934  03AE'                    l1812:
+  1935                           
+  1936                           ;newmain.c: 242:                 state[0] = 1;
+  1937  03AE' 018A'              	clrf	_state
+  1938  03AF' 0A8A'              	incf	_state,f
+  1939  03B0'                    l1814:
+  1940                           
+  1941                           ;newmain.c: 243:             if ((cmd[0] == 'B')&&(cmd[1] == 'L')&&(cmd[2] == 'I')&&(cmd
+      +                          [3] == 'N')&&(cmd[4] == 'K')&&(cmd[5] == '0')&&(cmd[6] == '2')&&(cmd[7] == '#'))
+  1942  03B0' 3042               	movlw	66
+  1943  03B1' 0600'              	xorwf	_cmd,w
+  1944  03B2' 1D03               	btfss	3,2
+  1945  03B3' 2800'              	goto	u3611
+  1946  03B4' 2800'              	goto	u3610
+  1947  03B5'                    u3611:
+  1948  03B5' 2800'              	goto	l1832
+  1949  03B6'                    u3610:
+  1950  03B6'                    l1816:
+  1951  03B6' 304C               	movlw	76
+  1952  03B7' 0601'              	xorwf	_cmd+1,w
+  1953  03B8' 1D03               	btfss	3,2
+  1954  03B9' 2800'              	goto	u3621
+  1955  03BA' 2800'              	goto	u3620
+  1956  03BB'                    u3621:
+  1957  03BB' 2800'              	goto	l1832
+  1958  03BC'                    u3620:
+  1959  03BC'                    l1818:
+  1960  03BC' 3049               	movlw	73
+  1961  03BD' 0602'              	xorwf	_cmd+2,w
+  1962  03BE' 1D03               	btfss	3,2
+  1963  03BF' 2800'              	goto	u3631
+  1964  03C0' 2800'              	goto	u3630
+  1965  03C1'                    u3631:
+  1966  03C1' 2800'              	goto	l1832
+  1967  03C2'                    u3630:
+  1968  03C2'                    l1820:
+  1969  03C2' 304E               	movlw	78
+  1970  03C3' 0603'              	xorwf	_cmd+3,w
+  1971  03C4' 1D03               	btfss	3,2
+  1972  03C5' 2800'              	goto	u3641
+  1973  03C6' 2800'              	goto	u3640
+  1974  03C7'                    u3641:
+  1975  03C7' 2800'              	goto	l1832
+  1976  03C8'                    u3640:
+  1977  03C8'                    l1822:
+  1978  03C8' 304B               	movlw	75
+  1979  03C9' 0604'              	xorwf	_cmd+4,w
+  1980  03CA' 1D03               	btfss	3,2
+  1981  03CB' 2800'              	goto	u3651
+  1982  03CC' 2800'              	goto	u3650
+  1983  03CD'                    u3651:
+  1984  03CD' 2800'              	goto	l1832
+  1985  03CE'                    u3650:
+  1986  03CE'                    l1824:
+  1987  03CE' 3030               	movlw	48
+  1988  03CF' 0605'              	xorwf	_cmd+5,w
+  1989  03D0' 1D03               	btfss	3,2
+  1990  03D1' 2800'              	goto	u3661
+  1991  03D2' 2800'              	goto	u3660
+  1992  03D3'                    u3661:
+  1993  03D3' 2800'              	goto	l1832
+  1994  03D4'                    u3660:
+  1995  03D4'                    l1826:
+  1996  03D4' 3032               	movlw	50
+  1997  03D5' 0606'              	xorwf	_cmd+6,w
+  1998  03D6' 1D03               	btfss	3,2
+  1999  03D7' 2800'              	goto	u3671
+  2000  03D8' 2800'              	goto	u3670
+  2001  03D9'                    u3671:
+  2002  03D9' 2800'              	goto	l1832
+  2003  03DA'                    u3670:
+  2004  03DA'                    l1828:
+  2005  03DA' 3023               	movlw	35
+  2006  03DB' 0607'              	xorwf	_cmd+7,w
+  2007  03DC' 1D03               	btfss	3,2
+  2008  03DD' 2800'              	goto	u3681
+  2009  03DE' 2800'              	goto	u3680
+  2010  03DF'                    u3681:
+  2011  03DF' 2800'              	goto	l1832
+  2012  03E0'                    u3680:
+  2013  03E0'                    l1830:
+  2014                           
+  2015                           ;newmain.c: 244:                 state[1] = 1;
+  2016  03E0' 018B'              	clrf	_state+1
+  2017  03E1' 0A8B'              	incf	_state+1,f
+  2018  03E2'                    l1832:
+  2019                           
+  2020                           ;newmain.c: 245:             if ((cmd[0] == 'B')&&(cmd[1] == 'L')&&(cmd[2] == 'I')&&(cmd
+      +                          [3] == 'N')&&(cmd[4] == 'K')&&(cmd[5] == '0')&&(cmd[6] == '3')&&(cmd[7] == '#'))
+  2021  03E2' 3042               	movlw	66
+  2022  03E3' 0600'              	xorwf	_cmd,w
+  2023  03E4' 1D03               	btfss	3,2
+  2024  03E5' 2800'              	goto	u3691
+  2025  03E6' 2800'              	goto	u3690
+  2026  03E7'                    u3691:
+  2027  03E7' 2800'              	goto	l1850
+  2028  03E8'                    u3690:
+  2029  03E8'                    l1834:
+  2030  03E8' 304C               	movlw	76
+  2031  03E9' 0601'              	xorwf	_cmd+1,w
+  2032  03EA' 1D03               	btfss	3,2
+  2033  03EB' 2800'              	goto	u3701
+  2034  03EC' 2800'              	goto	u3700
+  2035  03ED'                    u3701:
+  2036  03ED' 2800'              	goto	l1850
+  2037  03EE'                    u3700:
+  2038  03EE'                    l1836:
+  2039  03EE' 3049               	movlw	73
+  2040  03EF' 0602'              	xorwf	_cmd+2,w
+  2041  03F0' 1D03               	btfss	3,2
+  2042  03F1' 2800'              	goto	u3711
+  2043  03F2' 2800'              	goto	u3710
+  2044  03F3'                    u3711:
+  2045  03F3' 2800'              	goto	l1850
+  2046  03F4'                    u3710:
+  2047  03F4'                    l1838:
+  2048  03F4' 304E               	movlw	78
+  2049  03F5' 0603'              	xorwf	_cmd+3,w
+  2050  03F6' 1D03               	btfss	3,2
+  2051  03F7' 2800'              	goto	u3721
+  2052  03F8' 2800'              	goto	u3720
+  2053  03F9'                    u3721:
+  2054  03F9' 2800'              	goto	l1850
+  2055  03FA'                    u3720:
+  2056  03FA'                    l1840:
+  2057  03FA' 304B               	movlw	75
+  2058  03FB' 0604'              	xorwf	_cmd+4,w
+  2059  03FC' 1D03               	btfss	3,2
+  2060  03FD' 2800'              	goto	u3731
+  2061  03FE' 2800'              	goto	u3730
+  2062  03FF'                    u3731:
+  2063  03FF' 2800'              	goto	l1850
+  2064  0400'                    u3730:
+  2065  0400'                    l1842:
+  2066  0400' 3030               	movlw	48
+  2067  0401' 0605'              	xorwf	_cmd+5,w
+  2068  0402' 1D03               	btfss	3,2
+  2069  0403' 2800'              	goto	u3741
+  2070  0404' 2800'              	goto	u3740
+  2071  0405'                    u3741:
+  2072  0405' 2800'              	goto	l1850
+  2073  0406'                    u3740:
+  2074  0406'                    l1844:
+  2075  0406' 3033               	movlw	51
+  2076  0407' 0606'              	xorwf	_cmd+6,w
+  2077  0408' 1D03               	btfss	3,2
+  2078  0409' 2800'              	goto	u3751
+  2079  040A' 2800'              	goto	u3750
+  2080  040B'                    u3751:
+  2081  040B' 2800'              	goto	l1850
+  2082  040C'                    u3750:
+  2083  040C'                    l1846:
+  2084  040C' 3023               	movlw	35
+  2085  040D' 0607'              	xorwf	_cmd+7,w
+  2086  040E' 1D03               	btfss	3,2
+  2087  040F' 2800'              	goto	u3761
+  2088  0410' 2800'              	goto	u3760
+  2089  0411'                    u3761:
+  2090  0411' 2800'              	goto	l1850
+  2091  0412'                    u3760:
+  2092  0412'                    l1848:
+  2093                           
+  2094                           ;newmain.c: 246:                 state[2] = 1;
+  2095  0412' 018C'              	clrf	_state+2
+  2096  0413' 0A8C'              	incf	_state+2,f
+  2097  0414'                    l1850:
+  2098                           
+  2099                           ;newmain.c: 247:             if ((cmd[0] == 'B')&&(cmd[1] == 'L')&&(cmd[2] == 'I')&&(cmd
+      +                          [3] == 'N')&&(cmd[4] == 'K')&&(cmd[5] == '0')&&(cmd[6] == '4')&&(cmd[7] == '#'))
+  2100  0414' 3042               	movlw	66
+  2101  0415' 0600'              	xorwf	_cmd,w
+  2102  0416' 1D03               	btfss	3,2
+  2103  0417' 2800'              	goto	u3771
+  2104  0418' 2800'              	goto	u3770
+  2105  0419'                    u3771:
+  2106  0419' 2800'              	goto	l1868
+  2107  041A'                    u3770:
+  2108  041A'                    l1852:
+  2109  041A' 304C               	movlw	76
+  2110  041B' 0601'              	xorwf	_cmd+1,w
+  2111  041C' 1D03               	btfss	3,2
+  2112  041D' 2800'              	goto	u3781
+  2113  041E' 2800'              	goto	u3780
+  2114  041F'                    u3781:
+  2115  041F' 2800'              	goto	l1868
+  2116  0420'                    u3780:
+  2117  0420'                    l1854:
+  2118  0420' 3049               	movlw	73
+  2119  0421' 0602'              	xorwf	_cmd+2,w
+  2120  0422' 1D03               	btfss	3,2
+  2121  0423' 2800'              	goto	u3791
+  2122  0424' 2800'              	goto	u3790
+  2123  0425'                    u3791:
+  2124  0425' 2800'              	goto	l1868
+  2125  0426'                    u3790:
+  2126  0426'                    l1856:
+  2127  0426' 304E               	movlw	78
+  2128  0427' 0603'              	xorwf	_cmd+3,w
+  2129  0428' 1D03               	btfss	3,2
+  2130  0429' 2800'              	goto	u3801
+  2131  042A' 2800'              	goto	u3800
+  2132  042B'                    u3801:
+  2133  042B' 2800'              	goto	l1868
+  2134  042C'                    u3800:
+  2135  042C'                    l1858:
+  2136  042C' 304B               	movlw	75
+  2137  042D' 0604'              	xorwf	_cmd+4,w
+  2138  042E' 1D03               	btfss	3,2
+  2139  042F' 2800'              	goto	u3811
+  2140  0430' 2800'              	goto	u3810
+  2141  0431'                    u3811:
+  2142  0431' 2800'              	goto	l1868
+  2143  0432'                    u3810:
+  2144  0432'                    l1860:
+  2145  0432' 3030               	movlw	48
+  2146  0433' 0605'              	xorwf	_cmd+5,w
+  2147  0434' 1D03               	btfss	3,2
+  2148  0435' 2800'              	goto	u3821
+  2149  0436' 2800'              	goto	u3820
+  2150  0437'                    u3821:
+  2151  0437' 2800'              	goto	l1868
+  2152  0438'                    u3820:
+  2153  0438'                    l1862:
+  2154  0438' 3034               	movlw	52
+  2155  0439' 0606'              	xorwf	_cmd+6,w
+  2156  043A' 1D03               	btfss	3,2
+  2157  043B' 2800'              	goto	u3831
+  2158  043C' 2800'              	goto	u3830
+  2159  043D'                    u3831:
+  2160  043D' 2800'              	goto	l1868
+  2161  043E'                    u3830:
+  2162  043E'                    l1864:
+  2163  043E' 3023               	movlw	35
+  2164  043F' 0607'              	xorwf	_cmd+7,w
+  2165  0440' 1D03               	btfss	3,2
+  2166  0441' 2800'              	goto	u3841
+  2167  0442' 2800'              	goto	u3840
+  2168  0443'                    u3841:
+  2169  0443' 2800'              	goto	l1868
+  2170  0444'                    u3840:
+  2171  0444'                    l1866:
+  2172                           
+  2173                           ;newmain.c: 248:                 state[3] = 1;
+  2174  0444' 018D'              	clrf	_state+3
+  2175  0445' 0A8D'              	incf	_state+3,f
+  2176  0446'                    l1868:
+  2177                           
+  2178                           ;newmain.c: 249:             if ((cmd[0] == 'B')&&(cmd[1] == 'L')&&(cmd[2] == 'I')&&(cmd
+      +                          [3] == 'N')&&(cmd[4] == 'K')&&(cmd[5] == '0')&&(cmd[6] == '5')&&(cmd[7] == '#'))
+  2179  0446' 3042               	movlw	66
+  2180  0447' 0600'              	xorwf	_cmd,w
+  2181  0448' 1D03               	btfss	3,2
+  2182  0449' 2800'              	goto	u3851
+  2183  044A' 2800'              	goto	u3850
+  2184  044B'                    u3851:
+  2185  044B' 2800'              	goto	l1886
+  2186  044C'                    u3850:
+  2187  044C'                    l1870:
+  2188  044C' 304C               	movlw	76
+  2189  044D' 0601'              	xorwf	_cmd+1,w
+  2190  044E' 1D03               	btfss	3,2
+  2191  044F' 2800'              	goto	u3861
+  2192  0450' 2800'              	goto	u3860
+  2193  0451'                    u3861:
+  2194  0451' 2800'              	goto	l1886
+  2195  0452'                    u3860:
+  2196  0452'                    l1872:
+  2197  0452' 3049               	movlw	73
+  2198  0453' 0602'              	xorwf	_cmd+2,w
+  2199  0454' 1D03               	btfss	3,2
+  2200  0455' 2800'              	goto	u3871
+  2201  0456' 2800'              	goto	u3870
+  2202  0457'                    u3871:
+  2203  0457' 2800'              	goto	l1886
+  2204  0458'                    u3870:
+  2205  0458'                    l1874:
+  2206  0458' 304E               	movlw	78
+  2207  0459' 0603'              	xorwf	_cmd+3,w
+  2208  045A' 1D03               	btfss	3,2
+  2209  045B' 2800'              	goto	u3881
+  2210  045C' 2800'              	goto	u3880
+  2211  045D'                    u3881:
+  2212  045D' 2800'              	goto	l1886
+  2213  045E'                    u3880:
+  2214  045E'                    l1876:
+  2215  045E' 304B               	movlw	75
+  2216  045F' 0604'              	xorwf	_cmd+4,w
+  2217  0460' 1D03               	btfss	3,2
+  2218  0461' 2800'              	goto	u3891
+  2219  0462' 2800'              	goto	u3890
+  2220  0463'                    u3891:
+  2221  0463' 2800'              	goto	l1886
+  2222  0464'                    u3890:
+  2223  0464'                    l1878:
+  2224  0464' 3030               	movlw	48
+  2225  0465' 0605'              	xorwf	_cmd+5,w
+  2226  0466' 1D03               	btfss	3,2
+  2227  0467' 2800'              	goto	u3901
+  2228  0468' 2800'              	goto	u3900
+  2229  0469'                    u3901:
+  2230  0469' 2800'              	goto	l1886
+  2231  046A'                    u3900:
+  2232  046A'                    l1880:
+  2233  046A' 3035               	movlw	53
+  2234  046B' 0606'              	xorwf	_cmd+6,w
+  2235  046C' 1D03               	btfss	3,2
+  2236  046D' 2800'              	goto	u3911
+  2237  046E' 2800'              	goto	u3910
+  2238  046F'                    u3911:
+  2239  046F' 2800'              	goto	l1886
+  2240  0470'                    u3910:
+  2241  0470'                    l1882:
+  2242  0470' 3023               	movlw	35
+  2243  0471' 0607'              	xorwf	_cmd+7,w
+  2244  0472' 1D03               	btfss	3,2
+  2245  0473' 2800'              	goto	u3921
+  2246  0474' 2800'              	goto	u3920
+  2247  0475'                    u3921:
+  2248  0475' 2800'              	goto	l1886
+  2249  0476'                    u3920:
+  2250  0476'                    l1884:
+  2251                           
+  2252                           ;newmain.c: 250:                 state[4] = 1;
+  2253  0476' 018E'              	clrf	_state+4
+  2254  0477' 0A8E'              	incf	_state+4,f
+  2255  0478'                    l1886:
+  2256                           
+  2257                           ;newmain.c: 251:             if ((cmd[0] == 'B')&&(cmd[1] == 'L')&&(cmd[2] == 'I')&&(cmd
+      +                          [3] == 'N')&&(cmd[4] == 'K')&&(cmd[5] == '0')&&(cmd[6] == '6')&&(cmd[7] == '#'))
+  2258  0478' 3042               	movlw	66
+  2259  0479' 0600'              	xorwf	_cmd,w
+  2260  047A' 1D03               	btfss	3,2
+  2261  047B' 2800'              	goto	u3931
+  2262  047C' 2800'              	goto	u3930
+  2263  047D'                    u3931:
+  2264  047D' 2800'              	goto	l1904
+  2265  047E'                    u3930:
+  2266  047E'                    l1888:
+  2267  047E' 304C               	movlw	76
+  2268  047F' 0601'              	xorwf	_cmd+1,w
+  2269  0480' 1D03               	btfss	3,2
+  2270  0481' 2800'              	goto	u3941
+  2271  0482' 2800'              	goto	u3940
+  2272  0483'                    u3941:
+  2273  0483' 2800'              	goto	l1904
+  2274  0484'                    u3940:
+  2275  0484'                    l1890:
+  2276  0484' 3049               	movlw	73
+  2277  0485' 0602'              	xorwf	_cmd+2,w
+  2278  0486' 1D03               	btfss	3,2
+  2279  0487' 2800'              	goto	u3951
+  2280  0488' 2800'              	goto	u3950
+  2281  0489'                    u3951:
+  2282  0489' 2800'              	goto	l1904
+  2283  048A'                    u3950:
+  2284  048A'                    l1892:
+  2285  048A' 304E               	movlw	78
+  2286  048B' 0603'              	xorwf	_cmd+3,w
+  2287  048C' 1D03               	btfss	3,2
+  2288  048D' 2800'              	goto	u3961
+  2289  048E' 2800'              	goto	u3960
+  2290  048F'                    u3961:
+  2291  048F' 2800'              	goto	l1904
+  2292  0490'                    u3960:
+  2293  0490'                    l1894:
+  2294  0490' 304B               	movlw	75
+  2295  0491' 0604'              	xorwf	_cmd+4,w
+  2296  0492' 1D03               	btfss	3,2
+  2297  0493' 2800'              	goto	u3971
+  2298  0494' 2800'              	goto	u3970
+  2299  0495'                    u3971:
+  2300  0495' 2800'              	goto	l1904
+  2301  0496'                    u3970:
+  2302  0496'                    l1896:
+  2303  0496' 3030               	movlw	48
+  2304  0497' 0605'              	xorwf	_cmd+5,w
+  2305  0498' 1D03               	btfss	3,2
+  2306  0499' 2800'              	goto	u3981
+  2307  049A' 2800'              	goto	u3980
+  2308  049B'                    u3981:
+  2309  049B' 2800'              	goto	l1904
+  2310  049C'                    u3980:
+  2311  049C'                    l1898:
+  2312  049C' 3036               	movlw	54
+  2313  049D' 0606'              	xorwf	_cmd+6,w
+  2314  049E' 1D03               	btfss	3,2
+  2315  049F' 2800'              	goto	u3991
+  2316  04A0' 2800'              	goto	u3990
+  2317  04A1'                    u3991:
+  2318  04A1' 2800'              	goto	l1904
+  2319  04A2'                    u3990:
+  2320  04A2'                    l1900:
+  2321  04A2' 3023               	movlw	35
+  2322  04A3' 0607'              	xorwf	_cmd+7,w
+  2323  04A4' 1D03               	btfss	3,2
+  2324  04A5' 2800'              	goto	u4001
+  2325  04A6' 2800'              	goto	u4000
+  2326  04A7'                    u4001:
+  2327  04A7' 2800'              	goto	l1904
+  2328  04A8'                    u4000:
+  2329  04A8'                    l1902:
+  2330                           
+  2331                           ;newmain.c: 252:                 state[5] = 1;
+  2332  04A8' 018F'              	clrf	_state+5
+  2333  04A9' 0A8F'              	incf	_state+5,f
+  2334  04AA'                    l1904:
+  2335                           
+  2336                           ;newmain.c: 253:             if ((cmd[0] == 'B')&&(cmd[1] == 'L')&&(cmd[2] == 'I')&&(cmd
+      +                          [3] == 'N')&&(cmd[4] == 'K')&&(cmd[5] == '0')&&(cmd[6] == '7')&&(cmd[7] == '#'))
+  2337  04AA' 3042               	movlw	66
+  2338  04AB' 0600'              	xorwf	_cmd,w
+  2339  04AC' 1D03               	btfss	3,2
+  2340  04AD' 2800'              	goto	u4011
+  2341  04AE' 2800'              	goto	u4010
+  2342  04AF'                    u4011:
+  2343  04AF' 2800'              	goto	l1922
+  2344  04B0'                    u4010:
+  2345  04B0'                    l1906:
+  2346  04B0' 304C               	movlw	76
+  2347  04B1' 0601'              	xorwf	_cmd+1,w
+  2348  04B2' 1D03               	btfss	3,2
+  2349  04B3' 2800'              	goto	u4021
+  2350  04B4' 2800'              	goto	u4020
+  2351  04B5'                    u4021:
+  2352  04B5' 2800'              	goto	l1922
+  2353  04B6'                    u4020:
+  2354  04B6'                    l1908:
+  2355  04B6' 3049               	movlw	73
+  2356  04B7' 0602'              	xorwf	_cmd+2,w
+  2357  04B8' 1D03               	btfss	3,2
+  2358  04B9' 2800'              	goto	u4031
+  2359  04BA' 2800'              	goto	u4030
+  2360  04BB'                    u4031:
+  2361  04BB' 2800'              	goto	l1922
+  2362  04BC'                    u4030:
+  2363  04BC'                    l1910:
+  2364  04BC' 304E               	movlw	78
+  2365  04BD' 0603'              	xorwf	_cmd+3,w
+  2366  04BE' 1D03               	btfss	3,2
+  2367  04BF' 2800'              	goto	u4041
+  2368  04C0' 2800'              	goto	u4040
+  2369  04C1'                    u4041:
+  2370  04C1' 2800'              	goto	l1922
+  2371  04C2'                    u4040:
+  2372  04C2'                    l1912:
+  2373  04C2' 304B               	movlw	75
+  2374  04C3' 0604'              	xorwf	_cmd+4,w
+  2375  04C4' 1D03               	btfss	3,2
+  2376  04C5' 2800'              	goto	u4051
+  2377  04C6' 2800'              	goto	u4050
+  2378  04C7'                    u4051:
+  2379  04C7' 2800'              	goto	l1922
+  2380  04C8'                    u4050:
+  2381  04C8'                    l1914:
+  2382  04C8' 3030               	movlw	48
+  2383  04C9' 0605'              	xorwf	_cmd+5,w
+  2384  04CA' 1D03               	btfss	3,2
+  2385  04CB' 2800'              	goto	u4061
+  2386  04CC' 2800'              	goto	u4060
+  2387  04CD'                    u4061:
+  2388  04CD' 2800'              	goto	l1922
+  2389  04CE'                    u4060:
+  2390  04CE'                    l1916:
+  2391  04CE' 3037               	movlw	55
+  2392  04CF' 0606'              	xorwf	_cmd+6,w
+  2393  04D0' 1D03               	btfss	3,2
+  2394  04D1' 2800'              	goto	u4071
+  2395  04D2' 2800'              	goto	u4070
+  2396  04D3'                    u4071:
+  2397  04D3' 2800'              	goto	l1922
+  2398  04D4'                    u4070:
+  2399  04D4'                    l1918:
+  2400  04D4' 3023               	movlw	35
+  2401  04D5' 0607'              	xorwf	_cmd+7,w
+  2402  04D6' 1D03               	btfss	3,2
+  2403  04D7' 2800'              	goto	u4081
+  2404  04D8' 2800'              	goto	u4080
+  2405  04D9'                    u4081:
+  2406  04D9' 2800'              	goto	l1922
+  2407  04DA'                    u4080:
+  2408  04DA'                    l1920:
+  2409                           
+  2410                           ;newmain.c: 254:                 state[6] = 1;
+  2411  04DA' 0190'              	clrf	_state+6
+  2412  04DB' 0A90'              	incf	_state+6,f
+  2413  04DC'                    l1922:
+  2414                           
+  2415                           ;newmain.c: 255:             if ((cmd[0] == 'B')&&(cmd[1] == 'L')&&(cmd[2] == 'I')&&(cmd
+      +                          [3] == 'N')&&(cmd[4] == 'K')&&(cmd[5] == '0')&&(cmd[6] == '8')&&(cmd[7] == '#'))
+  2416  04DC' 3042               	movlw	66
+  2417  04DD' 0600'              	xorwf	_cmd,w
+  2418  04DE' 1D03               	btfss	3,2
+  2419  04DF' 2800'              	goto	u4091
+  2420  04E0' 2800'              	goto	u4090
+  2421  04E1'                    u4091:
+  2422  04E1' 2800'              	goto	l1940
+  2423  04E2'                    u4090:
+  2424  04E2'                    l1924:
+  2425  04E2' 304C               	movlw	76
+  2426  04E3' 0601'              	xorwf	_cmd+1,w
+  2427  04E4' 1D03               	btfss	3,2
+  2428  04E5' 2800'              	goto	u4101
+  2429  04E6' 2800'              	goto	u4100
+  2430  04E7'                    u4101:
+  2431  04E7' 2800'              	goto	l1940
+  2432  04E8'                    u4100:
+  2433  04E8'                    l1926:
+  2434  04E8' 3049               	movlw	73
+  2435  04E9' 0602'              	xorwf	_cmd+2,w
+  2436  04EA' 1D03               	btfss	3,2
+  2437  04EB' 2800'              	goto	u4111
+  2438  04EC' 2800'              	goto	u4110
+  2439  04ED'                    u4111:
+  2440  04ED' 2800'              	goto	l1940
+  2441  04EE'                    u4110:
+  2442  04EE'                    l1928:
+  2443  04EE' 304E               	movlw	78
+  2444  04EF' 0603'              	xorwf	_cmd+3,w
+  2445  04F0' 1D03               	btfss	3,2
+  2446  04F1' 2800'              	goto	u4121
+  2447  04F2' 2800'              	goto	u4120
+  2448  04F3'                    u4121:
+  2449  04F3' 2800'              	goto	l1940
+  2450  04F4'                    u4120:
+  2451  04F4'                    l1930:
+  2452  04F4' 304B               	movlw	75
+  2453  04F5' 0604'              	xorwf	_cmd+4,w
+  2454  04F6' 1D03               	btfss	3,2
+  2455  04F7' 2800'              	goto	u4131
+  2456  04F8' 2800'              	goto	u4130
+  2457  04F9'                    u4131:
+  2458  04F9' 2800'              	goto	l1940
+  2459  04FA'                    u4130:
+  2460  04FA'                    l1932:
+  2461  04FA' 3030               	movlw	48
+  2462  04FB' 0605'              	xorwf	_cmd+5,w
+  2463  04FC' 1D03               	btfss	3,2
+  2464  04FD' 2800'              	goto	u4141
+  2465  04FE' 2800'              	goto	u4140
+  2466  04FF'                    u4141:
+  2467  04FF' 2800'              	goto	l1940
+  2468  0500'                    u4140:
+  2469  0500'                    l1934:
+  2470  0500' 3038               	movlw	56
+  2471  0501' 0606'              	xorwf	_cmd+6,w
+  2472  0502' 1D03               	btfss	3,2
+  2473  0503' 2800'              	goto	u4151
+  2474  0504' 2800'              	goto	u4150
+  2475  0505'                    u4151:
+  2476  0505' 2800'              	goto	l1940
+  2477  0506'                    u4150:
+  2478  0506'                    l1936:
+  2479  0506' 3023               	movlw	35
+  2480  0507' 0607'              	xorwf	_cmd+7,w
+  2481  0508' 1D03               	btfss	3,2
+  2482  0509' 2800'              	goto	u4161
+  2483  050A' 2800'              	goto	u4160
+  2484  050B'                    u4161:
+  2485  050B' 2800'              	goto	l1940
+  2486  050C'                    u4160:
+  2487  050C'                    l1938:
+  2488                           
+  2489                           ;newmain.c: 256:                 state[7] = 1;
+  2490  050C' 0191'              	clrf	_state+7
+  2491  050D' 0A91'              	incf	_state+7,f
+  2492  050E'                    l1940:
+  2493                           
+  2494                           ;newmain.c: 257:             if ((cmd[0] == 'B')&&(cmd[1] == 'L')&&(cmd[2] == 'I')&&(cmd
+      +                          [3] == 'N')&&(cmd[4] == 'K')&&(cmd[5] == '*')&&(cmd[6] == '#'))
+  2495  050E' 3042               	movlw	66
+  2496  050F' 0600'              	xorwf	_cmd,w
+  2497  0510' 1D03               	btfss	3,2
+  2498  0511' 2800'              	goto	u4171
+  2499  0512' 2800'              	goto	u4170
+  2500  0513'                    u4171:
+  2501  0513' 2800'              	goto	l1442
+  2502  0514'                    u4170:
+  2503  0514'                    l1942:
+  2504  0514' 304C               	movlw	76
+  2505  0515' 0601'              	xorwf	_cmd+1,w
+  2506  0516' 1D03               	btfss	3,2
+  2507  0517' 2800'              	goto	u4181
+  2508  0518' 2800'              	goto	u4180
+  2509  0519'                    u4181:
+  2510  0519' 2800'              	goto	l1442
+  2511  051A'                    u4180:
+  2512  051A'                    l1944:
+  2513  051A' 3049               	movlw	73
+  2514  051B' 0602'              	xorwf	_cmd+2,w
+  2515  051C' 1D03               	btfss	3,2
+  2516  051D' 2800'              	goto	u4191
+  2517  051E' 2800'              	goto	u4190
+  2518  051F'                    u4191:
+  2519  051F' 2800'              	goto	l1442
+  2520  0520'                    u4190:
+  2521  0520'                    l1946:
+  2522  0520' 304E               	movlw	78
+  2523  0521' 0603'              	xorwf	_cmd+3,w
+  2524  0522' 1D03               	btfss	3,2
+  2525  0523' 2800'              	goto	u4201
+  2526  0524' 2800'              	goto	u4200
+  2527  0525'                    u4201:
+  2528  0525' 2800'              	goto	l1442
+  2529  0526'                    u4200:
+  2530  0526'                    l1948:
+  2531  0526' 304B               	movlw	75
+  2532  0527' 0604'              	xorwf	_cmd+4,w
+  2533  0528' 1D03               	btfss	3,2
+  2534  0529' 2800'              	goto	u4211
+  2535  052A' 2800'              	goto	u4210
+  2536  052B'                    u4211:
+  2537  052B' 2800'              	goto	l1442
+  2538  052C'                    u4210:
+  2539  052C'                    l1950:
+  2540  052C' 302A               	movlw	42
+  2541  052D' 0605'              	xorwf	_cmd+5,w
+  2542  052E' 1D03               	btfss	3,2
+  2543  052F' 2800'              	goto	u4221
+  2544  0530' 2800'              	goto	u4220
+  2545  0531'                    u4221:
+  2546  0531' 2800'              	goto	l1442
+  2547  0532'                    u4220:
+  2548  0532'                    l1952:
+  2549  0532' 3023               	movlw	35
+  2550  0533' 0606'              	xorwf	_cmd+6,w
+  2551  0534' 1D03               	btfss	3,2
+  2552  0535' 2800'              	goto	u4231
+  2553  0536' 2800'              	goto	u4230
+  2554  0537'                    u4231:
+  2555  0537' 2800'              	goto	l1442
+  2556  0538'                    u4230:
+  2557  0538'                    l1954:
+  2558                           
+  2559                           ;newmain.c: 258:                 for (char i = 0; i < 8; i++) state[i] = 1;
+  2560  0538' 0186'              	clrf	main@i_87
+  2561  0539'                    l1956:
+  2562  0539' 3008               	movlw	8
+  2563  053A' 0206'              	subwf	main@i_87,w
+  2564  053B' 1C03               	skipc
+  2565  053C' 2800'              	goto	u4241
+  2566  053D' 2800'              	goto	u4240
+  2567  053E'                    u4241:
+  2568  053E' 2800'              	goto	l1960
+  2569  053F'                    u4240:
+  2570  053F' 2800'              	goto	l1442
+  2571  0540'                    l1960:
+  2572  0540' 0806'              	movf	main@i_87,w
+  2573  0541' 3E00'              	addlw	(low (_state| 0))& (0+255)
+  2574  0542' 0086               	movwf	6
+  2575  0543' 0187               	clrf	7
+  2576  0544' 0181               	clrf	1
+  2577  0545' 0A81               	incf	1,f
+  2578  0546'                    l1962:
+  2579  0546' 3001               	movlw	1
+  2580  0547' 0083'              	movwf	??_main
+  2581  0548' 0803'              	movf	??_main,w
+  2582  0549' 0786'              	addwf	main@i_87,f
+  2583  054A' 2800'              	goto	l1956
+  2584  054B' 3180' 2800'        	ljmp	start
+  2585  054D'                    __end_of_main:
+  2586                           
+  2587                           	psect	text1
+  2588  0000'                    __ptext1:	
+  2589 ;; *************** function _Blink_LED *****************
+  2590 ;; Defined at:
+  2591 ;;		line 16 in file "newmain.c"
+  2592 ;; Parameters:    Size  Location     Type
+  2593 ;;  x               2    0[COMMON] int 
+  2594 ;; Auto vars:     Size  Location     Type
+  2595 ;;		None
+  2596 ;; Return value:  Size  Location     Type
+  2597 ;;                  1    wreg      void 
+  2598 ;; Registers used:
+  2599 ;;		wreg, status,2, status,0
+  2600 ;; Tracked objects:
+  2601 ;;		On entry : 0/0
+  2602 ;;		On exit  : 0/0
+  2603 ;;		Unchanged: 0/0
+  2604 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6
+  2605 ;;      Params:         2       0       0       0       0       0       0       0
+  2606 ;;      Locals:         0       0       0       0       0       0       0       0
+  2607 ;;      Temps:          1       0       0       0       0       0       0       0
+  2608 ;;      Totals:         3       0       0       0       0       0       0       0
+  2609 ;;Total ram usage:        3 bytes
+  2610 ;; Hardware stack levels used: 1
+  2611 ;; This function calls:
+  2612 ;;		Nothing
+  2613 ;; This function is called by:
+  2614 ;;		_main
+  2615 ;; This function uses a non-reentrant model
+  2616 ;;
+  2617                           
+  2618  0000'                    _Blink_LED:	
+  2619                           ;psect for function _Blink_LED
+  2620                           
+  2621  0000'                    l1310:	
+  2622                           ;incstack = 0
+  2623                           ; Regs used in _Blink_LED: [wreg+status,2+status,0]
+  2624                           
+  2625                           
+  2626                           ;newmain.c: 17:     if (x == 1) {
+  2627  0000' 0300'              	decf	Blink_LED@x,w
+  2628  0001' 0401'              	iorwf	Blink_LED@x+1,w
+  2629  0002' 1D03               	btfss	3,2
+  2630  0003' 2800'              	goto	u2131
+  2631  0004' 2800'              	goto	u2130
+  2632  0005'                    u2131:
+  2633  0005' 2800'              	goto	l1326
+  2634  0006'                    u2130:
+  2635  0006'                    l1312:
+  2636                           
+  2637                           ;newmain.c: 18:         if (count < 500) {
+  2638  0006' 0801'              	movf	_count+1,w
+  2639  0007' 3A80               	xorlw	128
+  2640  0008' 0082'              	movwf	??_Blink_LED
+  2641  0009' 3081               	movlw	129
+  2642  000A' 0202'              	subwf	??_Blink_LED,w
+  2643  000B' 1D03               	skipz
+  2644  000C' 2800'              	goto	u2145
+  2645  000D' 30F4               	movlw	244
+  2646  000E' 0200'              	subwf	_count,w
+  2647  000F'                    u2145:
+  2648  000F' 1803               	skipnc
+  2649  0010' 2800'              	goto	u2141
+  2650  0011' 2800'              	goto	u2140
+  2651  0012'                    u2141:
+  2652  0012' 2800'              	goto	l1318
+  2653  0013'                    u2140:
+  2654  0013'                    l1314:
+  2655                           
+  2656                           ;newmain.c: 19:             LATCbits.LATC0 = 1;
+  2657  0013' 0022               	movlb	2	; select bank2
+  2658  0014' 140E               	bsf	14,0	;volatile
+  2659  0015'                    l1316:
+  2660                           
+  2661                           ;newmain.c: 20:             count++;
+  2662  0015' 3001               	movlw	1
+  2663  0016' 0780'              	addwf	_count,f
+  2664  0017' 3000               	movlw	0
+  2665  0018' 3D81'              	addwfc	_count+1,f
+  2666                           
+  2667                           ;newmain.c: 21:             _delay((unsigned long)((1)*(1000000/4000.0)));
+  2668  0019' 3053               	movlw	83
+  2669  001A'                    u4257:
+  2670  001A' 0B89               	decfsz	9,f
+  2671  001B' 2800'              	goto	u4257
+  2672  001C' 0000               	nop
+  2673                           
+  2674                           ;newmain.c: 22:         } else if (count < 1000) {
+  2675  001D' 2800'              	goto	l1326
+  2676  001E'                    l1318:
+  2677  001E' 0801'              	movf	_count+1,w
+  2678  001F' 3A80               	xorlw	128
+  2679  0020' 0082'              	movwf	??_Blink_LED
+  2680  0021' 3083               	movlw	131
+  2681  0022' 0202'              	subwf	??_Blink_LED,w
+  2682  0023' 1D03               	skipz
+  2683  0024' 2800'              	goto	u2155
+  2684  0025' 30E8               	movlw	232
+  2685  0026' 0200'              	subwf	_count,w
+  2686  0027'                    u2155:
+  2687  0027' 1803               	skipnc
+  2688  0028' 2800'              	goto	u2151
+  2689  0029' 2800'              	goto	u2150
+  2690  002A'                    u2151:
+  2691  002A' 2800'              	goto	l1324
+  2692  002B'                    u2150:
+  2693  002B'                    l1320:
+  2694                           
+  2695                           ;newmain.c: 23:             LATCbits.LATC0 = 0;
+  2696  002B' 0022               	movlb	2	; select bank2
+  2697  002C' 100E               	bcf	14,0	;volatile
+  2698  002D' 2800'              	goto	l1316
+  2699  002E'                    l1324:
+  2700  002E' 0180'              	clrf	_count
+  2701  002F' 0181'              	clrf	_count+1
+  2702  0030'                    l1326:
+  2703                           
+  2704                           ;newmain.c: 28:     if (x == 2) {
+  2705  0030' 3002               	movlw	2
+  2706  0031' 0600'              	xorwf	Blink_LED@x,w
+  2707  0032' 0401'              	iorwf	Blink_LED@x+1,w
+  2708  0033' 1D03               	btfss	3,2
+  2709  0034' 2800'              	goto	u2161
+  2710  0035' 2800'              	goto	u2160
+  2711  0036'                    u2161:
+  2712  0036' 2800'              	goto	l1342
+  2713  0037'                    u2160:
+  2714  0037'                    l1328:
+  2715                           
+  2716                           ;newmain.c: 29:         if (count < 500) {
+  2717  0037' 0801'              	movf	_count+1,w
+  2718  0038' 3A80               	xorlw	128
+  2719  0039' 0082'              	movwf	??_Blink_LED
+  2720  003A' 3081               	movlw	129
+  2721  003B' 0202'              	subwf	??_Blink_LED,w
+  2722  003C' 1D03               	skipz
+  2723  003D' 2800'              	goto	u2175
+  2724  003E' 30F4               	movlw	244
+  2725  003F' 0200'              	subwf	_count,w
+  2726  0040'                    u2175:
+  2727  0040' 1803               	skipnc
+  2728  0041' 2800'              	goto	u2171
+  2729  0042' 2800'              	goto	u2170
+  2730  0043'                    u2171:
+  2731  0043' 2800'              	goto	l1334
+  2732  0044'                    u2170:
+  2733  0044'                    l1330:
+  2734                           
+  2735                           ;newmain.c: 30:             LATCbits.LATC1 = 1;
+  2736  0044' 0022               	movlb	2	; select bank2
+  2737  0045' 148E               	bsf	14,1	;volatile
+  2738  0046'                    l1332:
+  2739                           
+  2740                           ;newmain.c: 31:             count++;
+  2741  0046' 3001               	movlw	1
+  2742  0047' 0780'              	addwf	_count,f
+  2743  0048' 3000               	movlw	0
+  2744  0049' 3D81'              	addwfc	_count+1,f
+  2745                           
+  2746                           ;newmain.c: 32:             _delay((unsigned long)((1)*(1000000/4000.0)));
+  2747  004A' 3053               	movlw	83
+  2748  004B'                    u4267:
+  2749  004B' 0B89               	decfsz	9,f
+  2750  004C' 2800'              	goto	u4267
+  2751  004D' 0000               	nop
+  2752                           
+  2753                           ;newmain.c: 33:         } else if (count < 1000) {
+  2754  004E' 2800'              	goto	l1342
+  2755  004F'                    l1334:
+  2756  004F' 0801'              	movf	_count+1,w
+  2757  0050' 3A80               	xorlw	128
+  2758  0051' 0082'              	movwf	??_Blink_LED
+  2759  0052' 3083               	movlw	131
+  2760  0053' 0202'              	subwf	??_Blink_LED,w
+  2761  0054' 1D03               	skipz
+  2762  0055' 2800'              	goto	u2185
+  2763  0056' 30E8               	movlw	232
+  2764  0057' 0200'              	subwf	_count,w
+  2765  0058'                    u2185:
+  2766  0058' 1803               	skipnc
+  2767  0059' 2800'              	goto	u2181
+  2768  005A' 2800'              	goto	u2180
+  2769  005B'                    u2181:
+  2770  005B' 2800'              	goto	l1340
+  2771  005C'                    u2180:
+  2772  005C'                    l1336:
+  2773                           
+  2774                           ;newmain.c: 34:             LATCbits.LATC1 = 0;
+  2775  005C' 0022               	movlb	2	; select bank2
+  2776  005D' 108E               	bcf	14,1	;volatile
+  2777  005E' 2800'              	goto	l1332
+  2778  005F'                    l1340:
+  2779  005F' 0180'              	clrf	_count
+  2780  0060' 0181'              	clrf	_count+1
+  2781  0061'                    l1342:
+  2782                           
+  2783                           ;newmain.c: 39:     if (x == 3) {
+  2784  0061' 3003               	movlw	3
+  2785  0062' 0600'              	xorwf	Blink_LED@x,w
+  2786  0063' 0401'              	iorwf	Blink_LED@x+1,w
+  2787  0064' 1D03               	btfss	3,2
+  2788  0065' 2800'              	goto	u2191
+  2789  0066' 2800'              	goto	u2190
+  2790  0067'                    u2191:
+  2791  0067' 2800'              	goto	l1358
+  2792  0068'                    u2190:
+  2793  0068'                    l1344:
+  2794                           
+  2795                           ;newmain.c: 40:         if (count < 500) {
+  2796  0068' 0801'              	movf	_count+1,w
+  2797  0069' 3A80               	xorlw	128
+  2798  006A' 0082'              	movwf	??_Blink_LED
+  2799  006B' 3081               	movlw	129
+  2800  006C' 0202'              	subwf	??_Blink_LED,w
+  2801  006D' 1D03               	skipz
+  2802  006E' 2800'              	goto	u2205
+  2803  006F' 30F4               	movlw	244
+  2804  0070' 0200'              	subwf	_count,w
+  2805  0071'                    u2205:
+  2806  0071' 1803               	skipnc
+  2807  0072' 2800'              	goto	u2201
+  2808  0073' 2800'              	goto	u2200
+  2809  0074'                    u2201:
+  2810  0074' 2800'              	goto	l1350
+  2811  0075'                    u2200:
+  2812  0075'                    l1346:
+  2813                           
+  2814                           ;newmain.c: 41:             LATCbits.LATC2 = 1;
+  2815  0075' 0022               	movlb	2	; select bank2
+  2816  0076' 150E               	bsf	14,2	;volatile
+  2817  0077'                    l1348:
+  2818                           
+  2819                           ;newmain.c: 42:             count++;
+  2820  0077' 3001               	movlw	1
+  2821  0078' 0780'              	addwf	_count,f
+  2822  0079' 3000               	movlw	0
+  2823  007A' 3D81'              	addwfc	_count+1,f
+  2824                           
+  2825                           ;newmain.c: 43:             _delay((unsigned long)((1)*(1000000/4000.0)));
+  2826  007B' 3053               	movlw	83
+  2827  007C'                    u4277:
+  2828  007C' 0B89               	decfsz	9,f
+  2829  007D' 2800'              	goto	u4277
+  2830  007E' 0000               	nop
+  2831                           
+  2832                           ;newmain.c: 44:         } else if (count < 1000) {
+  2833  007F' 2800'              	goto	l1358
+  2834  0080'                    l1350:
+  2835  0080' 0801'              	movf	_count+1,w
+  2836  0081' 3A80               	xorlw	128
+  2837  0082' 0082'              	movwf	??_Blink_LED
+  2838  0083' 3083               	movlw	131
+  2839  0084' 0202'              	subwf	??_Blink_LED,w
+  2840  0085' 1D03               	skipz
+  2841  0086' 2800'              	goto	u2215
+  2842  0087' 30E8               	movlw	232
+  2843  0088' 0200'              	subwf	_count,w
+  2844  0089'                    u2215:
+  2845  0089' 1803               	skipnc
+  2846  008A' 2800'              	goto	u2211
+  2847  008B' 2800'              	goto	u2210
+  2848  008C'                    u2211:
+  2849  008C' 2800'              	goto	l1356
+  2850  008D'                    u2210:
+  2851  008D'                    l1352:
+  2852                           
+  2853                           ;newmain.c: 45:             LATCbits.LATC2 = 0;
+  2854  008D' 0022               	movlb	2	; select bank2
+  2855  008E' 110E               	bcf	14,2	;volatile
+  2856  008F' 2800'              	goto	l1348
+  2857  0090'                    l1356:
+  2858  0090' 0180'              	clrf	_count
+  2859  0091' 0181'              	clrf	_count+1
+  2860  0092'                    l1358:
+  2861                           
+  2862                           ;newmain.c: 50:     if (x == 4) {
+  2863  0092' 3004               	movlw	4
+  2864  0093' 0600'              	xorwf	Blink_LED@x,w
+  2865  0094' 0401'              	iorwf	Blink_LED@x+1,w
+  2866  0095' 1D03               	btfss	3,2
+  2867  0096' 2800'              	goto	u2221
+  2868  0097' 2800'              	goto	u2220
+  2869  0098'                    u2221:
+  2870  0098' 2800'              	goto	l1374
+  2871  0099'                    u2220:
+  2872  0099'                    l1360:
+  2873                           
+  2874                           ;newmain.c: 51:         if (count < 500) {
+  2875  0099' 0801'              	movf	_count+1,w
+  2876  009A' 3A80               	xorlw	128
+  2877  009B' 0082'              	movwf	??_Blink_LED
+  2878  009C' 3081               	movlw	129
+  2879  009D' 0202'              	subwf	??_Blink_LED,w
+  2880  009E' 1D03               	skipz
+  2881  009F' 2800'              	goto	u2235
+  2882  00A0' 30F4               	movlw	244
+  2883  00A1' 0200'              	subwf	_count,w
+  2884  00A2'                    u2235:
+  2885  00A2' 1803               	skipnc
+  2886  00A3' 2800'              	goto	u2231
+  2887  00A4' 2800'              	goto	u2230
+  2888  00A5'                    u2231:
+  2889  00A5' 2800'              	goto	l1366
+  2890  00A6'                    u2230:
+  2891  00A6'                    l1362:
+  2892                           
+  2893                           ;newmain.c: 52:             LATCbits.LATC3 = 1;
+  2894  00A6' 0022               	movlb	2	; select bank2
+  2895  00A7' 158E               	bsf	14,3	;volatile
+  2896  00A8'                    l1364:
+  2897                           
+  2898                           ;newmain.c: 53:             count++;
+  2899  00A8' 3001               	movlw	1
+  2900  00A9' 0780'              	addwf	_count,f
+  2901  00AA' 3000               	movlw	0
+  2902  00AB' 3D81'              	addwfc	_count+1,f
+  2903                           
+  2904                           ;newmain.c: 54:             _delay((unsigned long)((1)*(1000000/4000.0)));
+  2905  00AC' 3053               	movlw	83
+  2906  00AD'                    u4287:
+  2907  00AD' 0B89               	decfsz	9,f
+  2908  00AE' 2800'              	goto	u4287
+  2909  00AF' 0000               	nop
+  2910                           
+  2911                           ;newmain.c: 55:         } else if (count < 1000) {
+  2912  00B0' 2800'              	goto	l1374
+  2913  00B1'                    l1366:
+  2914  00B1' 0801'              	movf	_count+1,w
+  2915  00B2' 3A80               	xorlw	128
+  2916  00B3' 0082'              	movwf	??_Blink_LED
+  2917  00B4' 3083               	movlw	131
+  2918  00B5' 0202'              	subwf	??_Blink_LED,w
+  2919  00B6' 1D03               	skipz
+  2920  00B7' 2800'              	goto	u2245
+  2921  00B8' 30E8               	movlw	232
+  2922  00B9' 0200'              	subwf	_count,w
+  2923  00BA'                    u2245:
+  2924  00BA' 1803               	skipnc
+  2925  00BB' 2800'              	goto	u2241
+  2926  00BC' 2800'              	goto	u2240
+  2927  00BD'                    u2241:
+  2928  00BD' 2800'              	goto	l1372
+  2929  00BE'                    u2240:
+  2930  00BE'                    l1368:
+  2931                           
+  2932                           ;newmain.c: 56:             LATCbits.LATC3 = 0;
+  2933  00BE' 0022               	movlb	2	; select bank2
+  2934  00BF' 118E               	bcf	14,3	;volatile
+  2935  00C0' 2800'              	goto	l1364
+  2936  00C1'                    l1372:
+  2937  00C1' 0180'              	clrf	_count
+  2938  00C2' 0181'              	clrf	_count+1
+  2939  00C3'                    l1374:
+  2940                           
+  2941                           ;newmain.c: 61:     if (x == 5) {
+  2942  00C3' 3005               	movlw	5
+  2943  00C4' 0600'              	xorwf	Blink_LED@x,w
+  2944  00C5' 0401'              	iorwf	Blink_LED@x+1,w
+  2945  00C6' 1D03               	btfss	3,2
+  2946  00C7' 2800'              	goto	u2251
+  2947  00C8' 2800'              	goto	u2250
+  2948  00C9'                    u2251:
+  2949  00C9' 2800'              	goto	l1390
+  2950  00CA'                    u2250:
+  2951  00CA'                    l1376:
+  2952                           
+  2953                           ;newmain.c: 62:         if (count < 500) {
+  2954  00CA' 0801'              	movf	_count+1,w
+  2955  00CB' 3A80               	xorlw	128
+  2956  00CC' 0082'              	movwf	??_Blink_LED
+  2957  00CD' 3081               	movlw	129
+  2958  00CE' 0202'              	subwf	??_Blink_LED,w
+  2959  00CF' 1D03               	skipz
+  2960  00D0' 2800'              	goto	u2265
+  2961  00D1' 30F4               	movlw	244
+  2962  00D2' 0200'              	subwf	_count,w
+  2963  00D3'                    u2265:
+  2964  00D3' 1803               	skipnc
+  2965  00D4' 2800'              	goto	u2261
+  2966  00D5' 2800'              	goto	u2260
+  2967  00D6'                    u2261:
+  2968  00D6' 2800'              	goto	l1382
+  2969  00D7'                    u2260:
+  2970  00D7'                    l1378:
+  2971                           
+  2972                           ;newmain.c: 63:             LATCbits.LATC4 = 1;
+  2973  00D7' 0022               	movlb	2	; select bank2
+  2974  00D8' 160E               	bsf	14,4	;volatile
+  2975  00D9'                    l1380:
+  2976                           
+  2977                           ;newmain.c: 64:             count++;
+  2978  00D9' 3001               	movlw	1
+  2979  00DA' 0780'              	addwf	_count,f
+  2980  00DB' 3000               	movlw	0
+  2981  00DC' 3D81'              	addwfc	_count+1,f
+  2982                           
+  2983                           ;newmain.c: 65:             _delay((unsigned long)((1)*(1000000/4000.0)));
+  2984  00DD' 3053               	movlw	83
+  2985  00DE'                    u4297:
+  2986  00DE' 0B89               	decfsz	9,f
+  2987  00DF' 2800'              	goto	u4297
+  2988  00E0' 0000               	nop
+  2989                           
+  2990                           ;newmain.c: 66:         } else if (count < 1000) {
+  2991  00E1' 2800'              	goto	l1390
+  2992  00E2'                    l1382:
+  2993  00E2' 0801'              	movf	_count+1,w
+  2994  00E3' 3A80               	xorlw	128
+  2995  00E4' 0082'              	movwf	??_Blink_LED
+  2996  00E5' 3083               	movlw	131
+  2997  00E6' 0202'              	subwf	??_Blink_LED,w
+  2998  00E7' 1D03               	skipz
+  2999  00E8' 2800'              	goto	u2275
+  3000  00E9' 30E8               	movlw	232
+  3001  00EA' 0200'              	subwf	_count,w
+  3002  00EB'                    u2275:
+  3003  00EB' 1803               	skipnc
+  3004  00EC' 2800'              	goto	u2271
+  3005  00ED' 2800'              	goto	u2270
+  3006  00EE'                    u2271:
+  3007  00EE' 2800'              	goto	l1388
+  3008  00EF'                    u2270:
+  3009  00EF'                    l1384:
+  3010                           
+  3011                           ;newmain.c: 67:             LATCbits.LATC4 = 0;
+  3012  00EF' 0022               	movlb	2	; select bank2
+  3013  00F0' 120E               	bcf	14,4	;volatile
+  3014  00F1' 2800'              	goto	l1380
+  3015  00F2'                    l1388:
+  3016  00F2' 0180'              	clrf	_count
+  3017  00F3' 0181'              	clrf	_count+1
+  3018  00F4'                    l1390:
+  3019                           
+  3020                           ;newmain.c: 72:     if (x == 6) {
+  3021  00F4' 3006               	movlw	6
+  3022  00F5' 0600'              	xorwf	Blink_LED@x,w
+  3023  00F6' 0401'              	iorwf	Blink_LED@x+1,w
+  3024  00F7' 1D03               	btfss	3,2
+  3025  00F8' 2800'              	goto	u2281
+  3026  00F9' 2800'              	goto	u2280
+  3027  00FA'                    u2281:
+  3028  00FA' 2800'              	goto	l1406
+  3029  00FB'                    u2280:
+  3030  00FB'                    l1392:
+  3031                           
+  3032                           ;newmain.c: 73:         if (count < 500) {
+  3033  00FB' 0801'              	movf	_count+1,w
+  3034  00FC' 3A80               	xorlw	128
+  3035  00FD' 0082'              	movwf	??_Blink_LED
+  3036  00FE' 3081               	movlw	129
+  3037  00FF' 0202'              	subwf	??_Blink_LED,w
+  3038  0100' 1D03               	skipz
+  3039  0101' 2800'              	goto	u2295
+  3040  0102' 30F4               	movlw	244
+  3041  0103' 0200'              	subwf	_count,w
+  3042  0104'                    u2295:
+  3043  0104' 1803               	skipnc
+  3044  0105' 2800'              	goto	u2291
+  3045  0106' 2800'              	goto	u2290
+  3046  0107'                    u2291:
+  3047  0107' 2800'              	goto	l1398
+  3048  0108'                    u2290:
+  3049  0108'                    l1394:
+  3050                           
+  3051                           ;newmain.c: 74:             LATCbits.LATC5 = 1;
+  3052  0108' 0022               	movlb	2	; select bank2
+  3053  0109' 168E               	bsf	14,5	;volatile
+  3054  010A'                    l1396:
+  3055                           
+  3056                           ;newmain.c: 75:             count++;
+  3057  010A' 3001               	movlw	1
+  3058  010B' 0780'              	addwf	_count,f
+  3059  010C' 3000               	movlw	0
+  3060  010D' 3D81'              	addwfc	_count+1,f
+  3061                           
+  3062                           ;newmain.c: 76:             _delay((unsigned long)((1)*(1000000/4000.0)));
+  3063  010E' 3053               	movlw	83
+  3064  010F'                    u4307:
+  3065  010F' 0B89               	decfsz	9,f
+  3066  0110' 2800'              	goto	u4307
+  3067  0111' 0000               	nop
+  3068                           
+  3069                           ;newmain.c: 77:         } else if (count < 1000) {
+  3070  0112' 2800'              	goto	l1406
+  3071  0113'                    l1398:
+  3072  0113' 0801'              	movf	_count+1,w
+  3073  0114' 3A80               	xorlw	128
+  3074  0115' 0082'              	movwf	??_Blink_LED
+  3075  0116' 3083               	movlw	131
+  3076  0117' 0202'              	subwf	??_Blink_LED,w
+  3077  0118' 1D03               	skipz
+  3078  0119' 2800'              	goto	u2305
+  3079  011A' 30E8               	movlw	232
+  3080  011B' 0200'              	subwf	_count,w
+  3081  011C'                    u2305:
+  3082  011C' 1803               	skipnc
+  3083  011D' 2800'              	goto	u2301
+  3084  011E' 2800'              	goto	u2300
+  3085  011F'                    u2301:
+  3086  011F' 2800'              	goto	l1404
+  3087  0120'                    u2300:
+  3088  0120'                    l1400:
+  3089                           
+  3090                           ;newmain.c: 78:             LATCbits.LATC5 = 0;
+  3091  0120' 0022               	movlb	2	; select bank2
+  3092  0121' 128E               	bcf	14,5	;volatile
+  3093  0122' 2800'              	goto	l1396
+  3094  0123'                    l1404:
+  3095  0123' 0180'              	clrf	_count
+  3096  0124' 0181'              	clrf	_count+1
+  3097  0125'                    l1406:
+  3098                           
+  3099                           ;newmain.c: 83:     if (x == 7) {
+  3100  0125' 3007               	movlw	7
+  3101  0126' 0600'              	xorwf	Blink_LED@x,w
+  3102  0127' 0401'              	iorwf	Blink_LED@x+1,w
+  3103  0128' 1D03               	btfss	3,2
+  3104  0129' 2800'              	goto	u2311
+  3105  012A' 2800'              	goto	u2310
+  3106  012B'                    u2311:
+  3107  012B' 2800'              	goto	l1422
+  3108  012C'                    u2310:
+  3109  012C'                    l1408:
+  3110                           
+  3111                           ;newmain.c: 84:         if (count < 500) {
+  3112  012C' 0801'              	movf	_count+1,w
+  3113  012D' 3A80               	xorlw	128
+  3114  012E' 0082'              	movwf	??_Blink_LED
+  3115  012F' 3081               	movlw	129
+  3116  0130' 0202'              	subwf	??_Blink_LED,w
+  3117  0131' 1D03               	skipz
+  3118  0132' 2800'              	goto	u2325
+  3119  0133' 30F4               	movlw	244
+  3120  0134' 0200'              	subwf	_count,w
+  3121  0135'                    u2325:
+  3122  0135' 1803               	skipnc
+  3123  0136' 2800'              	goto	u2321
+  3124  0137' 2800'              	goto	u2320
+  3125  0138'                    u2321:
+  3126  0138' 2800'              	goto	l1414
+  3127  0139'                    u2320:
+  3128  0139'                    l1410:
+  3129                           
+  3130                           ;newmain.c: 85:             LATCbits.LATC6 = 1;
+  3131  0139' 0022               	movlb	2	; select bank2
+  3132  013A' 170E               	bsf	14,6	;volatile
+  3133  013B'                    l1412:
+  3134                           
+  3135                           ;newmain.c: 86:             count++;
+  3136  013B' 3001               	movlw	1
+  3137  013C' 0780'              	addwf	_count,f
+  3138  013D' 3000               	movlw	0
+  3139  013E' 3D81'              	addwfc	_count+1,f
+  3140                           
+  3141                           ;newmain.c: 87:             _delay((unsigned long)((1)*(1000000/4000.0)));
+  3142  013F' 3053               	movlw	83
+  3143  0140'                    u4317:
+  3144  0140' 0B89               	decfsz	9,f
+  3145  0141' 2800'              	goto	u4317
+  3146  0142' 0000               	nop
+  3147                           
+  3148                           ;newmain.c: 88:         } else if (count < 1000) {
+  3149  0143' 2800'              	goto	l1422
+  3150  0144'                    l1414:
+  3151  0144' 0801'              	movf	_count+1,w
+  3152  0145' 3A80               	xorlw	128
+  3153  0146' 0082'              	movwf	??_Blink_LED
+  3154  0147' 3083               	movlw	131
+  3155  0148' 0202'              	subwf	??_Blink_LED,w
+  3156  0149' 1D03               	skipz
+  3157  014A' 2800'              	goto	u2335
+  3158  014B' 30E8               	movlw	232
+  3159  014C' 0200'              	subwf	_count,w
+  3160  014D'                    u2335:
+  3161  014D' 1803               	skipnc
+  3162  014E' 2800'              	goto	u2331
+  3163  014F' 2800'              	goto	u2330
+  3164  0150'                    u2331:
+  3165  0150' 2800'              	goto	l1420
+  3166  0151'                    u2330:
+  3167  0151'                    l1416:
+  3168                           
+  3169                           ;newmain.c: 89:             LATCbits.LATC6 = 0;
+  3170  0151' 0022               	movlb	2	; select bank2
+  3171  0152' 130E               	bcf	14,6	;volatile
+  3172  0153' 2800'              	goto	l1412
+  3173  0154'                    l1420:
+  3174  0154' 0180'              	clrf	_count
+  3175  0155' 0181'              	clrf	_count+1
+  3176  0156'                    l1422:
+  3177                           
+  3178                           ;newmain.c: 94:     if (x == 8) {
+  3179  0156' 3008               	movlw	8
+  3180  0157' 0600'              	xorwf	Blink_LED@x,w
+  3181  0158' 0401'              	iorwf	Blink_LED@x+1,w
+  3182  0159' 1D03               	btfss	3,2
+  3183  015A' 2800'              	goto	u2341
+  3184  015B' 2800'              	goto	u2340
+  3185  015C'                    u2341:
+  3186  015C' 2800'              	goto	l67
+  3187  015D'                    u2340:
+  3188  015D'                    l1424:
+  3189                           
+  3190                           ;newmain.c: 95:         if (count < 500) {
+  3191  015D' 0801'              	movf	_count+1,w
+  3192  015E' 3A80               	xorlw	128
+  3193  015F' 0082'              	movwf	??_Blink_LED
+  3194  0160' 3081               	movlw	129
+  3195  0161' 0202'              	subwf	??_Blink_LED,w
+  3196  0162' 1D03               	skipz
+  3197  0163' 2800'              	goto	u2355
+  3198  0164' 30F4               	movlw	244
+  3199  0165' 0200'              	subwf	_count,w
+  3200  0166'                    u2355:
+  3201  0166' 1803               	skipnc
+  3202  0167' 2800'              	goto	u2351
+  3203  0168' 2800'              	goto	u2350
+  3204  0169'                    u2351:
+  3205  0169' 2800'              	goto	l1430
+  3206  016A'                    u2350:
+  3207  016A'                    l1426:
+  3208                           
+  3209                           ;newmain.c: 96:             LATCbits.LATC7 = 1;
+  3210  016A' 0022               	movlb	2	; select bank2
+  3211  016B' 178E               	bsf	14,7	;volatile
+  3212  016C'                    l1428:
+  3213                           
+  3214                           ;newmain.c: 97:             count++;
+  3215  016C' 3001               	movlw	1
+  3216  016D' 0780'              	addwf	_count,f
+  3217  016E' 3000               	movlw	0
+  3218  016F' 3D81'              	addwfc	_count+1,f
+  3219                           
+  3220                           ;newmain.c: 98:             _delay((unsigned long)((1)*(1000000/4000.0)));
+  3221  0170' 3053               	movlw	83
+  3222  0171'                    u4327:
+  3223  0171' 0B89               	decfsz	9,f
+  3224  0172' 2800'              	goto	u4327
+  3225  0173' 0000               	nop
+  3226                           
+  3227                           ;newmain.c: 99:         } else if (count < 1000) {
+  3228  0174' 2800'              	goto	l67
+  3229  0175'                    l1430:
+  3230  0175' 0801'              	movf	_count+1,w
+  3231  0176' 3A80               	xorlw	128
+  3232  0177' 0082'              	movwf	??_Blink_LED
+  3233  0178' 3083               	movlw	131
+  3234  0179' 0202'              	subwf	??_Blink_LED,w
+  3235  017A' 1D03               	skipz
+  3236  017B' 2800'              	goto	u2365
+  3237  017C' 30E8               	movlw	232
+  3238  017D' 0200'              	subwf	_count,w
+  3239  017E'                    u2365:
+  3240  017E' 1803               	skipnc
+  3241  017F' 2800'              	goto	u2361
+  3242  0180' 2800'              	goto	u2360
+  3243  0181'                    u2361:
+  3244  0181' 2800'              	goto	l1436
+  3245  0182'                    u2360:
+  3246  0182'                    l1432:
+  3247                           
+  3248                           ;newmain.c: 100:             LATCbits.LATC7 = 0;
+  3249  0182' 0022               	movlb	2	; select bank2
+  3250  0183' 138E               	bcf	14,7	;volatile
+  3251  0184' 2800'              	goto	l1428
+  3252  0185'                    l1436:
+  3253  0185' 0180'              	clrf	_count
+  3254  0186' 0181'              	clrf	_count+1
+  3255  0187'                    l67:
+  3256  0187' 0008               	return
+  3257  0188'                    __end_of_Blink_LED:
+  3258  007E                     btemp	set	126	;btemp
+  3259  007E                     wtemp0	set	126
+  3260                           
+  3261                           	psect	idloc
+  3262                           
+  3263                           ;Config register IDLOC0 @ 0x8000
+  3264                           ;	unspecified, using default values
+  3265  8000                     	org	32768
+  3266  8000  3FFF               	dw	16383
+  3267                           
+  3268                           ;Config register IDLOC1 @ 0x8001
+  3269                           ;	unspecified, using default values
+  3270  8001                     	org	32769
+  3271  8001  3FFF               	dw	16383
+  3272                           
+  3273                           ;Config register IDLOC2 @ 0x8002
+  3274                           ;	unspecified, using default values
+  3275  8002                     	org	32770
+  3276  8002  3FFF               	dw	16383
+  3277                           
+  3278                           ;Config register IDLOC3 @ 0x8003
+  3279                           ;	unspecified, using default values
+  3280  8003                     	org	32771
+  3281  8003  3FFF               	dw	16383
+  3282                           
+  3283                           	psect	config
+  3284                           
+  3285                           ;Config register CONFIG1 @ 0x8007
+  3286                           ;	unspecified, using default values
+  3287                           ;	Oscillator Selection Bits
+  3288                           ;	FOSC = 0x7, unprogrammed default
+  3289                           ;	Watchdog Timer Enable
+  3290                           ;	WDTE = 0x3, unprogrammed default
+  3291                           ;	Power-up Timer Enable
+  3292                           ;	PWRTE = 0x1, unprogrammed default
+  3293                           ;	MCLR Pin Function Select
+  3294                           ;	MCLRE = 0x1, unprogrammed default
+  3295                           ;	Flash Program Memory Code Protection
+  3296                           ;	CP = 0x1, unprogrammed default
+  3297                           ;	Brown-out Reset Enable
+  3298                           ;	BOREN = 0x3, unprogrammed default
+  3299                           ;	Clock Out Enable
+  3300                           ;	CLKOUTEN = 0x1, unprogrammed default
+  3301                           ;	Internal/External Switchover Mode
+  3302                           ;	IESO = 0x1, unprogrammed default
+  3303                           ;	Fail-Safe Clock Monitor Enable
+  3304                           ;	FCMEN = 0x1, unprogrammed default
+  3305  8007                     	org	32775
+  3306  8007  3FFF               	dw	16383
+  3307                           
+  3308                           ;Config register CONFIG2 @ 0x8008
+  3309                           ;	unspecified, using default values
+  3310                           ;	Flash Memory Self-Write Protection
+  3311                           ;	WRT = 0x3, unprogrammed default
+  3312                           ;	Stack Overflow/Underflow Reset Enable
+  3313                           ;	STVREN = 0x1, unprogrammed default
+  3314                           ;	Brown-out Reset Voltage Selection
+  3315                           ;	BORV = 0x1, unprogrammed default
+  3316                           ;	Low-Power Brown Out Reset
+  3317                           ;	LPBOR = 0x1, unprogrammed default
+  3318                           ;	Low-Voltage Programming Enable
+  3319                           ;	LVP = 0x1, unprogrammed default
+  3320  8008                     	org	32776
+  3321  8008  3FFF               	dw	16383
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         23
+    Persistent  32
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      9      14
+    BANK0            80      0      18
+    BANK1            80      0       0
+    BANK2            80      0       0
+    BANK3            80      0       0
+    BANK4            80      0       0
+    BANK5            80      0       0
+    BANK6            16      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->_Blink_LED
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Critical Paths under _main in BANK6
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 6     6      0    1079
+                                              3 COMMON     6     6      0
+                          _Blink_LED
+                        _EUSART_Read
+                 _EUSART_is_rx_ready
+                  _SYSTEM_Initialize
+ ---------------------------------------------------------------------------------
+ (1) _SYSTEM_Initialize                                    0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _EUSART_is_rx_ready                                   0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _EUSART_Read                                          0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _Blink_LED                                            3     1      2     784
+                                              0 COMMON     3     1      2
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _Blink_LED
+   _EUSART_Read
+   _EUSART_is_rx_ready
+   _SYSTEM_Initialize
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BIGRAM             1F0      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+BITCOMMON            E      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+COMMON               E      9       E       2      100.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR2              0      0       0       3        0.0%
+SFR2                 0      0       0       3        0.0%
+STACK                0      0       0       3        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+ABS                  0      0      20       4        0.0%
+BITBANK0            50      0       0       5        0.0%
+BITSFR4              0      0       0       5        0.0%
+SFR4                 0      0       0       5        0.0%
+BANK0               50      0      12       6       22.5%
+BITSFR5              0      0       0       6        0.0%
+SFR5                 0      0       0       6        0.0%
+BITBANK1            50      0       0       7        0.0%
+BITSFR6              0      0       0       7        0.0%
+SFR6                 0      0       0       7        0.0%
+BANK1               50      0       0       8        0.0%
+BITSFR7              0      0       0       8        0.0%
+SFR7                 0      0       0       8        0.0%
+BITBANK2            50      0       0       9        0.0%
+BITSFR8              0      0       0       9        0.0%
+SFR8                 0      0       0       9        0.0%
+BANK2               50      0       0      10        0.0%
+BITSFR9              0      0       0      10        0.0%
+SFR9                 0      0       0      10        0.0%
+BITBANK3            50      0       0      11        0.0%
+BITSFR10             0      0       0      11        0.0%
+SFR10                0      0       0      11        0.0%
+BANK3               50      0       0      12        0.0%
+BITSFR11             0      0       0      12        0.0%
+SFR11                0      0       0      12        0.0%
+BITBANK4            50      0       0      13        0.0%
+BITSFR12             0      0       0      13        0.0%
+SFR12                0      0       0      13        0.0%
+BANK4               50      0       0      14        0.0%
+BITSFR13             0      0       0      14        0.0%
+SFR13                0      0       0      14        0.0%
+BITBANK5            50      0       0      15        0.0%
+BITSFR14             0      0       0      15        0.0%
+SFR14                0      0       0      15        0.0%
+BANK5               50      0       0      16        0.0%
+BITSFR15             0      0       0      16        0.0%
+SFR15                0      0       0      16        0.0%
+BITBANK6            10      0       0      17        0.0%
+BITSFR16             0      0       0      17        0.0%
+SFR16                0      0       0      17        0.0%
+BANK6               10      0       0      18        0.0%
+BITSFR17             0      0       0      18        0.0%
+SFR17                0      0       0      18        0.0%
+BITSFR18             0      0       0      19        0.0%
+SFR18                0      0       0      19        0.0%
+DATA                 0      0      20      19        0.0%
+BITSFR19             0      0       0      20        0.0%
+SFR19                0      0       0      20        0.0%
+BITSFR20             0      0       0      21        0.0%
+SFR20                0      0       0      21        0.0%
+BITSFR21             0      0       0      22        0.0%
+SFR21                0      0       0      22        0.0%
+BITSFR22             0      0       0      23        0.0%
+SFR22                0      0       0      23        0.0%
+BITSFR23             0      0       0      24        0.0%
+SFR23                0      0       0      24        0.0%
+BITSFR24             0      0       0      25        0.0%
+SFR24                0      0       0      25        0.0%
+BITSFR25             0      0       0      26        0.0%
+SFR25                0      0       0      26        0.0%
+BITSFR26             0      0       0      27        0.0%
+SFR26                0      0       0      27        0.0%
+BITSFR27             0      0       0      28        0.0%
+SFR27                0      0       0      28        0.0%
+BITSFR28             0      0       0      29        0.0%
+SFR28                0      0       0      29        0.0%
+BITSFR29             0      0       0      30        0.0%
+SFR29                0      0       0      30        0.0%
+BITSFR30             0      0       0      31        0.0%
+SFR30                0      0       0      31        0.0%
+BITSFR31             0      0       0      32        0.0%
+SFR31                0      0       0      32        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.36 build 20220127204148 
+Symbol Table                                                                                   Sun May 29 22:22:53 2022
+
+                     l67 0187                       l86 0090                       _on 0003  
+                    _cmd 0000                      _off 0002                      wreg 0009  
+           ?_EUSART_Read 0000                     l1310 0000                     l1400 0120  
+                   l1320 002B                     l1312 0006                     l1410 0139  
+                   l1330 0044                     l1314 0013                     l1420 0154  
+                   l1412 013B                     l1404 0123                     l1340 005F  
+                   l1332 0046                     l1324 002E                     l1316 0015  
+                   l1500 00B6                     l1430 0175                     l1414 0144  
+                   l1422 0156                     l1406 0125                     l1350 0080  
+                   l1334 004F                     l1342 0061                     l1318 001E  
+                   l1326 0030                     l1510 00CB                     l1502 00BC  
+                   l1432 0182                     l1424 015D                     l1416 0151  
+                   l1408 012C                     l1360 0099                     l1352 008D  
+                   l1344 0068                     l1336 005C                     l1328 0037  
+                   l1600 01A9                     l1520 00E5                     l1512 00D1  
+                   l1504 00BE                     l1440 0003                     l1426 016A  
+                   l1362 00A6                     l1346 0075                     l1610 01BF  
+                   l1602 01AF                     l1530 00FF                     l1514 00D7  
+                   l1522 00E7                     l1506 00C0                     l1450 000E  
+                   l1442 0005                     l1436 0185                     l1428 016C  
+                   l1380 00D9                     l1372 00C1                     l1364 00A8  
+                   l1356 0090                     l1348 0077                     l1700 0296  
+                   l1612 01C5                     l1620 01D5                     l1604 01B1  
+                   l1540 0115                     l1532 0105                     l1524 00ED  
+                   l1516 00DD                     l1508 00C5                     l1460 002F  
+                   l1452 0015                     l1382 00E2                     l1390 00F4  
+                   l1366 00B1                     l1374 00C3                     l1358 0092  
+                   l1710 02AC                     l1702 029C                     l1630 01F0  
+                   l1622 01DB                     l1614 01CB                     l1606 01B3  
+                   l1542 011B                     l1550 012B                     l1534 0107  
+                   l1526 00F3                     l1518 00E3                     l1470 004F  
+                   l1462 0035                     l1454 001B                     l1438 0000  
+                   l1392 00FB                     l1384 00EF                     l1376 00CA  
+                   l1368 00BE                     l1800 038A                     l1720 02CA  
+                   l1712 02B2                     l1704 02A2                     l1640 01FA  
+                   l1624 01E1                     l1616 01D1                     l1608 01B9  
+                   l1560 0149                     l1552 0131                     l1544 0121  
+                   l1528 00F9                     l1536 0109                     l1472 0056  
+                   l1464 003C                     l1456 0022                     l1448 0008  
+                   l1480 0070                     l1394 0108                     l1378 00D7  
+                   l1810 03A8                     l1802 0390                     l1730 02E0  
+                   l1722 02CC                     l1714 02B8                     l1706 02A4  
+                   l1650 0218                     l1626 01E7                     l1618 01D3  
+                   l1570 015F                     l1562 014B                     l1554 0137  
+                   l1546 0127                     l1538 010F                     l1642 0200  
+                   l1490 00A8                     l1482 0078                     l1474 005C  
+                   l1466 0042                     l1458 0028                     l1396 010A  
+                   l1388 00F2                     l1900 04A2                     l1820 03C2  
+                   l1812 03AE                     l1804 0396                     l1732 02E6  
+                   l1740 02F6                     l1716 02BE                     l1724 02CE  
+                   l1708 02A6                     l1652 021E                     l1660 022E  
+                   l1644 0205                     l1636 01F1                     l1628 01ED  
+                   l1580 0175                     l1572 0165                     l1556 013D  
+                   l1564 014D                     l1548 0129                     l1492 00AA  
+                   l1484 0082                     l1476 0063                     l1468 0049  
+                   l1398 0113                     l1910 04BC                     l1902 04A8  
+                   l1830 03E0                     l1822 03C8                     l1806 039C  
+                   l1814 03B0                     l1750 0314                     l1742 02FC  
+                   l1734 02EC                     l1726 02D4                     l1718 02C4  
+                   l1670 024C                     l1662 0234                     l1654 0224  
+                   l1646 020C                     l1638 01F6                     l1590 018F  
+                   l1582 017B                     l1574 016B                     l1566 0153  
+                   l1558 0143                     l1494 00AC                     l1486 008C  
+                   l1478 0069                     l1920 04DA                     l1912 04C2  
+                   l1904 04AA                     l1840 03FA                     l1824 03CE  
+                   l1816 03B6                     l1832 03E2                     l1808 03A2  
+                   l1760 032A                     l1752 031A                     l1744 0302  
+                   l1736 02F2                     l1728 02DA                     l1680 0262  
+                   l1672 0252                     l1664 023A                     l1656 022A  
+                   l1648 0212                     l1584 0181                     l1592 0191  
+                   l1576 016D                     l1568 0159                     l1496 00B2  
+                   l1488 00A1                     l1930 04F4                     l1914 04C8  
+                   l1906 04B0                     l1922 04DC                     l1842 0400  
+                   l1834 03E8                     l1850 0414                     l1826 03D4  
+                   l1818 03BC                     l1770 0344                     l1762 0330  
+                   l1754 031C                     l1746 0308                     l1738 02F4  
+                   l1690 027C                     l1682 0268                     l1674 0254  
+                   l1666 0240                     l1658 022C                     l1594 0197  
+                   l1586 0187                     l1578 016F                     l1498 00B3  
+                   l1932 04FA                     l1924 04E2                     l1940 050E  
+                   l1916 04CE                     l1908 04B6                     l1860 0432  
+                   l1852 041A                     l1844 0406                     l1836 03EE  
+                   l1828 03DA                     l1780 035E                     l1764 0336  
+                   l1772 0346                     l1748 030E                     l1756 031E  
+                   l1684 026E                     l1692 027E                     l1668 0246  
+                   l1676 0256                     l1596 019D                     l1588 018D  
+                   l1950 052C                     l1942 0514                     l1934 0500  
+                   l1926 04E8                     l1918 04D4                     l1870 044C  
+                   l1862 0438                     l1854 0420                     l1846 040C  
+                   l1838 03F4                     l1790 0373                     l1782 0364  
+                   l1774 034C                     l1766 033C                     l1758 0324  
+                   l1694 0284                     l1686 0274                     l1678 025C  
+                   l1598 01A3                     l1960 0540                     l1952 0532  
+                   l1944 051A                     l1936 0506                     l1928 04EE  
+                   l1880 046A                     l1872 0452                     l1864 043E  
+                   l1856 0426                     l1848 0412                     l1784 0367  
+                   l1776 0352                     l1768 0342                     l1696 028A  
+                   l1688 027A                     l1962 0546                     l1954 0538  
+                   l1946 0520                     l1938 050C                     l1890 0484  
+                   l1882 0470                     l1874 0458                     l1866 0444  
+                   l1858 042C                     l1778 0358                     l1698 0290  
+                   l1794 0378                     l1956 0539                     l1948 0526  
+                   l1892 048A                     l1884 0476                     l1876 045E  
+                   l1868 0446                     l1796 037D                     l1788 036E  
+                   l1894 0490                     l1878 0464                     l1886 0478  
+                   l1798 0384                     l1896 0496                     l1888 047E  
+                   l1898 049C                     u2200 0075                     u3000 0218  
+                   u2201 0074                     u3001 0217                     u2210 008D  
+                   u2130 0006                     u3010 021E                     u2211 008C  
+                   u2131 0005                     u3011 021D                     u2300 0120  
+                   u2220 0099                     u2140 0013                     u3100 025C  
+                   u3020 0224                     u2301 011F                     u2221 0098  
+                   u2205 0071                     u2141 0012                     u3101 025B  
+                   u3021 0223                     u2310 012C                     u2230 00A6  
+                   u2150 002B                     u3110 0262                     u3030 022A  
+                   u2311 012B                     u2231 00A5                     u2215 0089  
+                   u2151 002A                     u3111 0261                     u3031 0229  
+                   _LATC 010E                     u2320 0139                     u2240 00BE  
+                   u2160 0037                     u4000 04A8                     u3200 029C  
+                   u3120 0268                     u3040 0234                     u2400 0035  
+                   u2321 0138                     u2305 011C                     u2241 00BD  
+                   u2161 0036                     u2145 000F                     u4001 04A7  
+                   u3201 029B                     u3121 0267                     u3041 0233  
+                   u2401 0034                     u2330 0151                     u2250 00CA  
+                   u2170 0044                     u4010 04B0                     u3210 02A2  
+                   u3130 026E                     u3050 023A                     u2410 0042  
+                   u2331 0150                     u2251 00C9                     u2235 00A2  
+                   u2171 0043                     u2155 0027                     u4011 04AF  
+                   u3211 02A1                     u3131 026D                     u3051 0239  
+                   u2411 0041                     u2340 015D                     u2260 00D7  
+                   u2180 005C                     u4100 04E8                     u4020 04B6  
+                   u3300 02E0                     u3220 02AC                     u3140 0274  
+                   u3060 0240                     u2500 00BC                     u2420 004F  
+                   u2341 015C                     u2325 0135                     u2261 00D6  
+                   u2245 00BA                     u2181 005B                     u4101 04E7  
+                   u4021 04B5                     u3301 02DF                     u3221 02AB  
+                   u3141 0273                     u3061 023F                     u2501 00BB  
+                   u2421 004E                     u2350 016A                     u2270 00EF  
+                   u2190 0068                     u4110 04EE                     u4030 04BC  
+                   u3310 02E6                     u3230 02B2                     u3150 027A  
+                   u3070 0246                     u2510 00C5                     u2430 005C  
+                   u2351 0169                     u2335 014D                     u2271 00EE  
+                   u2191 0067                     u2175 0040                     u4111 04ED  
+                   u4031 04BB                     u3311 02E5                     u3231 02B1  
+                   u3151 0279                     u3071 0245                     u2511 00C4  
+                   u2431 005B                     u2360 0182                     u2280 00FB  
+                   u4200 0526                     u4120 04F4                     u4040 04C2  
+                   u3400 0324                     u3320 02EC                     u3240 02B8  
+                   u3160 0284                     u3080 024C                     u2600 00FF  
+                   u2520 00CB                     u2440 0069                     u2361 0181  
+                   u2281 00FA                     u2265 00D3                     u2185 0058  
+                   u4201 0525                     u4121 04F3                     u4041 04C1  
+                   u3401 0323                     u3321 02EB                     u3241 02B7  
+                   u3161 0283                     u3081 024B                     u2601 00FE  
+                   u2521 00CA                     u2441 0068                     u2290 0108  
+                   u4210 052C                     u4130 04FA                     u4050 04C8  
+                   u3410 032A                     u3330 02F2                     u3250 02BE  
+                   u3170 028A                     u3090 0252                     u2610 0105  
+                   u2530 00D1                     u2450 0078                     u2370 000E  
+                   u2355 0166                     u2291 0107                     u2275 00EB  
+                   u4211 052B                     u4131 04F9                     u4051 04C7  
+                   u3411 0329                     u3331 02F1                     u3251 02BD  
+                   u3171 0289                     u3091 0251                     u2611 0104  
+                   u2531 00D0                     u2451 0077                     u2371 000D  
+                   u4220 0532                     u4140 0500                     u4060 04CE  
+                   u3500 0364                     u3420 0330                     u3340 02FC  
+                   u3260 02C4                     u3180 0290                     u2700 0143  
+                   u2620 010F                     u2540 00D7                     u2460 008C  
+                   u2380 001B                     u2365 017E                     u4221 0531  
+                   u4141 04FF                     u4061 04CD                     u3501 0363  
+                   u3421 032F                     u3341 02FB                     u3261 02C3  
+                   u3181 028F                     u2701 0142                     u2621 010E  
+                   u2541 00D6                     u2461 008B                     u2381 001A  
+                   u4230 0538                     u4150 0506                     u4070 04D4  
+                   u3510 036D                     u3430 0336                     u3350 0302  
+                   u3270 02CA                     u3190 0296                     u2710 0149  
+                   u2630 0115                     u2550 00DD                     u2470 00A1  
+                   u2390 0028                     u2295 0104                     u4231 0537  
+                   u4151 0505                     u4071 04D3                     u3511 036C  
+                   u3431 0335                     u3351 0301                     u3271 02C9  
+                   u3191 0295                     u2711 0148                     u2631 0114  
+                   u2551 00DC                     u2471 00A0                     u2391 0027  
+                   u4240 053F                     u4160 050C                     u4080 04DA  
+                   u3600 03AE                     u3520 037D                     u3440 033C  
+                   u3360 0308                     u3280 02D4                     u2800 0187  
+                   u2720 0153                     u2640 011B                     u2560 00E3  
+                   u2480 00A8                     u4241 053E                     u4161 050B  
+                   u4081 04D9                     u3601 03AD                     u3521 037C  
+                   u3441 033B                     u3361 0307                     u3281 02D3  
+                   u2801 0186                     u2721 0152                     u2641 011A  
+                   u2561 00E2                     u2481 00A7                     u4170 0514  
+                   u4090 04E2                     u3610 03B6                     u3530 0384  
+                   u3450 0342                     u3370 030E                     u3290 02DA  
+                   u2810 018D                     u2730 0159                     u2650 0121  
+                   u2570 00ED                     u2490 00B2                     u4307 010F  
+                   u4171 0513                     u4091 04E1                     u3611 03B5  
+                   u3531 0383                     u3451 0341                     u3371 030D  
+                   u3291 02D9                     u2811 018C                     u2731 0158  
+                   u2651 0120                     u2571 00EC                     u2491 00B1  
+                   u2475 009D                     u4180 051A                     u3700 03EE  
+                   u3620 03BC                     u3540 038A                     u3460 034C  
+                   u3380 0314                     u2900 01CB                     u2820 0197  
+                   u2740 015F                     u2660 0127                     u2580 00F3  
+                   u4317 0140                     u4181 0519                     u3701 03ED  
+                   u3621 03BB                     u3541 0389                     u3461 034B  
+                   u3381 0313                     u2901 01CA                     u2821 0196  
+                   u2741 015E                     u2661 0126                     u2581 00F2  
+                   u4190 0520                     u3710 03F4                     u3630 03C2  
+                   u3550 0390                     u3470 0352                     u3390 031A  
+                   u2910 01D1                     u2830 019D                     u2750 0165  
+                   u2670 0131                     u2590 00F9                     u4327 0171  
+                   u4191 051F                     u3711 03F3                     u3631 03C1  
+                   u3551 038F                     u3471 0351                     u3391 0319  
+                   u2911 01D0                     u2831 019C                     u2751 0164  
+                   u2671 0130                     u2591 00F8                     u3800 042C  
+                   u3720 03FA                     u3640 03C8                     u3560 0396  
+                   u3480 0358                     u2920 01DB                     u2840 01A3  
+                   u2760 016B                     u2680 0137                     u4257 001A  
+                   u3801 042B                     u3721 03F9                     u3641 03C7  
+                   u3561 0395                     u3481 0357                     u2921 01DA  
+                   u2841 01A2                     u2761 016A                     u2681 0136  
+                   u3810 0432                     u3730 0400                     u3650 03CE  
+                   u3570 039C                     u3490 035E                     u2930 01E1  
+                   u2850 01A9                     u2770 0175                     u2690 013D  
+                   u4267 004B                     u3811 0431                     u3731 03FF  
+                   u3651 03CD                     u3571 039B                     u3491 035D  
+                   u2931 01E0                     u2851 01A8                     u2771 0174  
+                   u2691 013C                     u3900 046A                     u3820 0438  
+                   u3740 0406                     u3660 03D4                     u3580 03A2  
+                   u2940 01E7                     u2860 01AF                     u2780 017B  
+                   u4277 007C                     u3901 0469                     u3821 0437  
+                   u3741 0405                     u3661 03D3                     u3581 03A1  
+                   u2941 01E6                     u2861 01AE                     u2781 017A  
+                   u3910 0470                     u3830 043E                     u3750 040C  
+                   u3670 03DA                     u3590 03A8                     u2950 01ED  
+                   u2870 01B9                     u2790 0181                     u4287 00AD  
+                   u3911 046F                     u3831 043D                     u3751 040B  
+                   u3671 03D9                     u3591 03A7                     u2951 01EC  
+                   u2871 01B8                     u2791 0180                     u3920 0476  
+                   u3840 0444                     u3760 0412                     u3680 03E0  
+                   u2960 0200                     u2880 01BF                     u4297 00DE  
+                   u3921 0475                     u3841 0443                     u3761 0411  
+                   u3681 03DF                     u2961 01FF                     u2881 01BE  
+                   u3930 047E                     u3850 044C                     u3770 041A  
+                   u3690 03E8                     u2970 0205                     u2890 01C5  
+                   u3931 047D                     u3851 044B                     u3771 0419  
+                   u3691 03E7                     u2971 0204                     u2891 01C4  
+                   u3940 0484                     u3860 0452                     u3780 0420  
+                   u2980 020C                     u3941 0483                     u3861 0451  
+                   u3781 041F                     u2981 020B                     u3950 048A  
+                   u3870 0458                     u3790 0426                     u2990 0212  
+                   u3951 0489                     u3871 0457                     u3791 0425  
+                   u2991 0211                     u3960 0490                     u3880 045E  
+                   u3961 048F                     u3881 045D                     u3970 0496  
+                   u3890 0464                     u3971 0495                     u3891 0463  
+                   u3980 049C                     u3981 049B                     u3990 04A2  
+                   u3991 04A1                     _main 0000                     fsr0h 0005  
+                   fsr1h 0007                     indf0 0000                     fsr0l 0004  
+                   indf1 0001                     fsr1l 0006                     btemp 007E  
+                   start 0000*                   ?_main 0000                    _blink 0004  
+                  _count 0000                    _state 000A                    main@i 0007  
+                  status 0003                    wtemp0 007E          __initialization 0000  
+           __end_of_main 054D                   ??_main 0003        _SYSTEM_Initialize 0000* 
+__end_of__initialization 000D        __end_of_Blink_LED 0188       ?_SYSTEM_Initialize 0000  
+         __pcstackCOMMON 0000      ??_SYSTEM_Initialize 0000               __pbssBANK0 0000  
+             __pmaintext 0000                  __ptext1 0000                  clrloop0 0001  
+   end_of_initialization 000D       _EUSART_is_rx_ready 0000*     ?_EUSART_is_rx_ready 0000  
+   ??_EUSART_is_rx_ready 0000                _Blink_LED 0000      start_initialization 0000  
+          ??_EUSART_Read 0000               ?_Blink_LED 0000              __pbssCOMMON 0000  
+              ___latbits 0002                 _LATCbits 010E                clear_ram0 0000  
+            ??_Blink_LED 0002              _EUSART_Read 0000*                main@i_85 0004  
+               main@i_86 0005                 main@i_87 0006               Blink_LED@x 0000  
