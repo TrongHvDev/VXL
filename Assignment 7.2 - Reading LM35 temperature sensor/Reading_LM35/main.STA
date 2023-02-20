@@ -1,0 +1,67 @@
+
+ROM used:   1301/8192 (16%)
+            1301/8192 (16%) including unused fragments
+
+            0.9 Average locations per line
+            11.4 Average locations per statement
+
+RAM used:   13/512 (3%) at main() level
+            56/512 (11%) worst case
+
+Stack used: 4 worst case (4 in main + 0 for interrupts)
+Stack size: 16
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   26    14  12  main.c
+   17     0   0  main.h
+  991     0   0  C:\Program Files (x86)\PICC\Devices\16F1509.h
+  456   100  88  C:\Program Files (x86)\PICC\Drivers\lcd.c
+----- -----
+ 1490   114 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     14   1    1             @delay_ms1
+ Inline         3    760  4.5  lcd_read_byte
+0     49   4    2    262  3.7  lcd_read_nibble
+0     54   4    1    399  2.4  lcd_send_nibble
+0     96   7    3    415  3.7  lcd_send_byte
+0     73   6    6    852  6.2  lcd_init
+0     18   1    4    208  6.3  lcd_gotoxy
+0     46   4    1    354  4.7  lcd_putc
+0    126  10    2    354  3.1  MAIN
+0     30   2    2             @ITOF
+0    203  16   18             @DIVFF
+0      8   1    0             @const738
+0     75   6    5             @PSTRINGC7_717
+0      7   1    0             @const743
+0     81   6    5             @PSTRINGCN7_717
+ Inline        16             @MULFF
+ Inline         5             @FTOSD
+0     77   6   16             @DIV3232
+0    341  26   18             @PRINTF_L32D_717FPFPF
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               8
+    Statements              114
+    Comments                273
+    Volume (V)              5481
+    Difficulty (D)          32.7
+    Effort to implement (E) 179371
+    Time to implement (T)   2 hours, 46 minutes
+    Est Delivered Bugs (B)  1
+    Cyclomatic Complexity   8
+    Maintainability (MI)    112
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     3  0  
+00003-007FF  1298  747  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

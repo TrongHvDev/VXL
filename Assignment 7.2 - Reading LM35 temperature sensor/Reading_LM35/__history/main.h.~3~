@@ -1,0 +1,6 @@
+#include <16F1509.h>
+#device ADC=10
+#fuses INTRC_IO
+#use delay(crystal=1000000)
+#include <lcd.c>
+

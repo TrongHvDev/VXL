@@ -1,0 +1,25 @@
+#include <main.h>
+
+float value;
+
+void main()
+{
+set_tris_a(0xff);
+setup_adc_ports(SAN0 | VSS_VDD);
+setup_adc(ADC_CLOCK_INTERNAL);
+
+lcd_init();
+
+   while(TRUE)
+   {
+set_adc_channel(0);
+delay_us(10);
+value = read_adc() / 2.046;
+lcd_gotoxy(1, 1);
+printf(lcd_putc,"HoVinhTrong 20146107");
+//!lcd_gotoxy(2,1);
+//!printf(lcd_putc, "AN0 = %.1g C", value);
+
+   }
+
+}
